@@ -757,7 +757,7 @@ function extend(deep, target, obj) {
 
 ### 箭头函数的理解
 
-### 解析赋值
+### 解构赋值
 
 ### promise专题
 
