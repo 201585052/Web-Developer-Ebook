@@ -2,29 +2,69 @@
 
 __前言__:看起来设计模式是很难的，但有一部分都是自己平时书写的方式，多看设计模式，有利于更稳更快地写代码
 
-> 构造器模式
+## 构造器模式
 
-```js
-var foo=(function module(id){
-    var name="liao";
-    var sex;
-    var id=id;
-    function getname(){
-        return name;
-    }
-    function setname(name){
-        this.name=name;
-    }
-    return {
-        name:name,
-        setname:setname
-    }
-})(123);
-foo.setname("liaoliao");
-console.log(foo.name);
-console.log(foo.id);
-/*这里就是在函数内部定义的为私有变量不可访问或修
-改，而通过return暴露出来的才是可以调用的公用方法和变量*/
-```
+>特点：
 
-> AMD与CMD
+    通过在构造器前面前面加new关键字，像使用构造器一样实例化一个新对象，对象成员由该函数定义
+>写法：
+
+    一个带参数的构造函数定义变量，通过函数的原型链来定义,我之前所写的构造函数的protype定义不太好会重写原型链
+
+## Module（模块）模式
+
+>特点：
+
+    js中为类提供私有和共有封装的方法，封装起来是为了避免污染全局，有点儿命名空间的意思
+
+>写法：
+
+    一个立即函数定义在一个变量里，通过return接口出来的都是公有方法和公有变量，其他为私有不可访问
+
+>变式（Revealing Module）：
+
+    将暴露的共有指针指向私有函数和属性上，为了在私有范围内简单定义所有函数和变量，并返回一个匿名对象，外部通过自行定义的共有方法使用
+
+## Singleton（单例）模式
+
+>特点：
+
+    实例不存在的时候，可以通过一个方法创建一个类来实现创建类的实例，如果已存在，简单返回对该对象的引用。
+
+>场景：
+
+    在JavaScript中，Singleton充当共享资源命名空间，为函数提供单一访问点
+
+## Observer（观察者）模式
+
+>特点：
+
+    一个subject由多个观察者观察变化，目标状态发生改变并且观察者可能对这些改变感兴趣就会发一个通知消息，调用每个观察者的更新方法，观察者们不感兴趣时可从目标中分离
+>组成：
+
+    1、Subject
+    2、Observer
+    3、ConcreteSubject
+    4、ConcreteObserver
+
+>区分于：
+
+    Publish/Subscribe是单向从Subscriber改变event Channel（Subscribe，fire event），Observer是observer可观察subject，subject可消去observer，双向
+
+## Mediator（中介者）模式
+
+>特点：
+
+    公开一个统一的接口，系统的不同部分可以通过接口进行通信
+
+>优点：
+
+    通信渠道由多对多减少到多对一，解耦程度较高，添加新发布者和订阅者也容易。
+
+>缺点：
+
+    引入单一故障点；简介通信导致性能下降
+
+>区分于：
+
+    Facade，Facade只是为模块或系统定义一个较简单的接口，方便使用没有添加任何额外的功能
