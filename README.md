@@ -35,15 +35,43 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 * [React Router](http://react-guide.github.io/react-router-cn/docs/API.html#router)
 * [webpack](https://www.webpackjs.com/)
 
->社区
+* jQuery源码
+  * [1](http://www.imooc.com/learn/172)
+  * [2](https://www.cnblogs.com/chuaWeb/p/jQuery-1-9-1-catalog.html)
+
+>前沿
 
 * [大漠w3c](http://www.w3cplus.com/)
 
 * [alloyteam](http://www.alloyteam.com/)
 
-* [react中文社区](http://react-china.org/)
+* [淘宝前端团队FED](http://taobaofed.org/)
+
+* [百度前端研发部](http://fex.baidu.com/)
+
+* [360奇舞团](https://75team.com/)
+
+* [凹凸实验室](https://aotu.io/)
+
+* [YMFE去哪儿大前端](https://ymfe.org/)
+
+>社区
+
+* [segmentfaul](https://segmentfault.com/frontend)
 
 * [掘金](https://juejin.im/)
+
+* [react中文社区](http://react-china.org/)
+
+>资源
+
+* [icon](http://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)
+
+* [设计可参考](https://www.syncfusion.com/)
+
+>工具
+
+* [Gopng-图片精灵制作](http://alloyteam.github.io/gopng/)
 
 ## git命令
 
