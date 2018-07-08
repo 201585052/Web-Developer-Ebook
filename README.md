@@ -32,7 +32,7 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 * [es6 入门小册子](http://es6.ruanyifeng.com/)
 * [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 * [React](http://www.css88.com/react/)
-* [React Router](http://react-guide.github.io/react-router-cn/docs/API.html#router)
+* [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [webpack](https://www.webpackjs.com/)
 
 * jQuery源码
@@ -55,6 +55,8 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 
 * [YMFE去哪儿大前端](https://ymfe.org/)
 
+* [阮一峰老师](http://www.ruanyifeng.com/blog/)
+
 >社区
 
 * [segmentfaul](https://segmentfault.com/frontend)
@@ -65,13 +67,22 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 
 >资源
 
-* [icon](http://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)
+* [icon 1](http://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)
 
-* [设计可参考](https://www.syncfusion.com/)
+* [icon 2](https://www.iconfinder.com/)
+
+* [设计可参考 1](https://www.syncfusion.com/)
+
+* [设计可参考 2](https://www.qianduanmei.com/)
 
 >工具
 
 * [Gopng-图片精灵制作](http://alloyteam.github.io/gopng/)
+* [在线IDE](https://stackblitz.com/)
+
+>框架
+
+* [Ant Design,React UI](https://ant.design/index-cn)
 
 ## git命令
 
@@ -103,6 +114,7 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 
     1、git gc 垃圾回收，压缩本地.git文件夹（上次使用的时候出现了问题。。）
     2、git clone git://xxoo --depth 1 只克隆上次commit的内容
+
 >工作分区(个人只是改动master)：
 
     1、git clone +https/ssh
@@ -113,29 +125,33 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
     6、不同机器操作时要从远程仓库pull一下拉入最新修改如 git pull origin master
     7、markdown去掉小型乱码的方法，直接在github页面上改吧，记得pull
 
+>gh-pages放多个静态页面
+
+    1、git checkout --orphan gh-pages
+    2、git add .
+    3、git commit -m 'sth'
+    4、git push -u origin gh-pages
+
 >问题：
 
 ```txt
 1、提交的commit并没有被github记录，往往是本地github邮箱和用户名设置的解决方案：
 git config --global user.email "你的邮件地址"
 git config --global user.name "你的Github用户名"
+2、.git文件夹比较大
+新建文件命名为.gitignore,内容为node_modules/,没必要把这么大用处不大的东西传上去(.gigignore那个命名windows下不可以，用ren gitignore.txt .gitignore转化一下)
+git clone git://xxoo --depth 1//克隆一次commit，删掉本地库重新传，副作用较小，对git非大牛的简单安全的方法
 ```
 
 [详细方案](https://segmentfault.com/a/1190000004318632)
 
 ## 有需求再看
 
->gitbook与gitpages相关
-
-* [只用master 搭git前端页面](https://www.cnblogs.com/iamzhanglei/p/6177961.html)
-
-* [搭自己写的html文件页面](https://www.cnblogs.com/lijiayi/p/githubpages.html)
+>gitbook相关
 
 * [gitbook简单使用(已过时，仅供本地参考)](http://www.chengweiyang.cn/gitbook/github-pages/README.html)
 
 * [github搭博客攻略](https://blog.csdn.net/renfufei/article/details/37725057/)
-
-* [gh-pages使用](https://www.cnblogs.com/bahcelor/p/6555011.html)
 
 * [gitbook打包pdf](https://jingyan.baidu.com/article/fec7a1e5e08a381191b4e75b.html)
 
