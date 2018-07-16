@@ -39,6 +39,8 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
   * [1](http://www.imooc.com/learn/172)
   * [2](https://www.cnblogs.com/chuaWeb/p/jQuery-1-9-1-catalog.html)
 
+* ECMA官方文档(http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.1)
+
 >前沿
 
 * [大漠w3c](http://www.w3cplus.com/)
@@ -79,6 +81,7 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 
 * [Gopng-图片精灵制作](http://alloyteam.github.io/gopng/)
 * [在线IDE](https://stackblitz.com/)
+* [免费cdn加速](https://www.bootcdn.cn/)
 
 >框架
 
