@@ -143,3 +143,19 @@ CSS Sprites（CSS精灵）
 　　动态网页实际上并不是独立存在于服务器上的网页文件，只有当用户请求时服务器才返回一个完整的网页。
 　　用户访问动态页面需要与数据库服务器进行数据交换。
 ```
+
+* 如何实现两个页面间的通信
+
+    postMessage API
+    支持两个页面跨域；只能传递字符串数据；参考 window.open；
+
+    直接引用
+    适用于两个页面在同一域；可以传递对象数据（对象数据使用 instanceof 做类型判断时有坑）；参考 window.open；
+
+    WebSocket 服务器中转
+    需要页面都与服务器建立 WebSockets 连接；支持跨域；参考 WebSocket
+
+    localStorage 事件
+    要求两页面在同一域；数据可以通过 localStorage 传递；参考 localStorage 的 'storage' 事件；
+
+* Web即时通信commet与SSE
