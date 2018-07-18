@@ -1,61 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
-<body>
-	<div style="background-color: red;width: 5.11rem">
-		<p style="width: 5rem">我是liaoliao我是liaoliao我是liaoliao我是liaoliao我是liaoliao我是liaoliao我是liaoliao我是liaoliao</p>
-	</div>
-</body>
+<!DOCTYPE html>  
+<html>  
+<head>  
+<style type="text/css">
+    #container{
+        margin: auto;
+        width:666px;
+        border: 1px solid black;
+        height:666px;
+        position:relative;
+    }
+    
+    #row{
+        height:222px;
+        width: 666px;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        position: absolute;
+        top:222px;
+    }
+    #col{
+        width:222px;
+        height:666px;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        position: absolute;
+        left:222px;
+    }
+</style>
 <script>
- (function flexible (window, document) {
-  var docEl = document.documentElement
-  var dpr = window.devicePixelRatio || 1
-
-  // adjust body font size
-  function setBodyFontSize () {
-    if (document.body) {
-      document.body.style.fontSize = (12 * dpr) + 'px'
-    }
-    else {
-      document.addEventListener('DOMContentLoaded', setBodyFontSize)
-    }
-  }
-  setBodyFontSize();
-
-  // set 1rem = viewWidth / 10
-  function setRemUnit () {
-    var rem = docEl.clientWidth / 10
-    docEl.style.fontSize = rem + 'px'
-  }
-
-  setRemUnit()
-
-  // reset rem unit on page resize
-  window.addEventListener('resize', setRemUnit)
-  window.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-      setRemUnit()
-    }
-  })
-
-  // detect 0.5px supports
-  if (dpr >= 2) {
-    var fakeBody = document.createElement('body')
-    var testElement = document.createElement('div')
-    testElement.style.border = '.5px solid transparent'
-    fakeBody.appendChild(testElement)
-    docEl.appendChild(fakeBody)
-    if (testElement.offsetHeight === 1) {
-      docEl.classList.add('hairlines')
-    }
-    docEl.removeChild(fakeBody)
-  }
-}(window, document))
-
-</script>
+    
+</script>  
+</head>  
+<body>  
+<div id="container">
+        <div id="row"></div>
+        <div id="col"></div>
+</div>
+</body>  
 </html>

@@ -7,128 +7,67 @@ __前言：__ Js的数据结构和算法描述其实挺重要的，虽然没有C
 ## js小题狂练
 
 > 实现一个英文字段，每个单词首字母大写
-> 如何实现数组的随机排序
-> 使用JS实现获取文件扩展名？
-> 一次笔试的题求连通图的（不会）
 
 ```js
-var [n,m] = read_line().split(" ");
-function Node(num){
-    this.num=num;
-    this.friends=[];
-}
-var x,y;
-[x,y]=read_line().split(" ");
-var sta=new Node(x);
-sta.friends.push(y);
-var tu={};
-tu[x] =sta;
-for(var i=1;i<m;i++){
-    [x,y]=read_line().split(" ");
-    if(!tu[x])
-    {
-        for(var hh in tu){
-            if(tu[hh]==y)
-                tu[hh].friends.push(y);
-        }
-        tu[x]=new Node(x);
-        tu[x].friends.push(y);
+function upperHead(text){
+    var arr = text.split(" ");
+    for(var i in arr){
+        arr[i] = arr[i].substring(0,1).toUpperCase()+arr[i].substring(1);
     }
-    else
-        tu[x].friends.push(y);
+    return arr.join(" ");
 }
-var Q = readInt();
-var bx,by;
-var ans=0;
-for(var x1 in tu){
-    for(x2 of tu[x1])
-    {
-        tu[x1].friends=tu[x1].friends.concat(tu[x2].frineds);
-    }
-}
-for(var j=0;j<Q;j++)
-{
-    [bx,by]=read_line.split(" ");
-    if(tu[bx].friends.indexOf(by)>=0||tu[by].friends.indexOf(bx)>=0)
-        ans++;
-}
-print(ans);
+var text = "hello i'm liaoliao";
+text[0] = text[0].toUpperCase();
+console.log(text);
+console.log(upperHead(text));
+```
 
-var input = read_line().split(' ').map(item => parseInt(item, 10));
-var N = input[0];
-var M = input[1];
-var MArr = [];
-var QArr = [];
-var i = 0;
-for (i = 0; i < M; i++) {
-    MArr.push(read_line().split(' '));
-}
-var Q = readInt();
-for (i = 0; i < Q; i++) {
-    QArr.push(read_line().split(' '));
-}
-// 以上为输入信息
-function dist (str) {
-    var o = {}, i = 0, result = '';
-    var temp = str.split('');
-    for (i = temp.length - 1; i >= 0; i--) {
-        if(!o[temp[i]]) {
-            o[temp[i]] = true;
-        }
+> 如何实现数组的随机排序
+
+```js
+// function shuffle(arr) {
+//     arr.sort(function (a, b) {
+//         return Math.random() - 0.5;
+//     });
+//     console.log(arr);
+//     return arr;
+// }
+// //虽然前面的方法实现了数组的随机排序，但总感觉每个元素被派到新数组的位置不是随机的。就如前面的示例，数组arr中值为1的元素，它的原先键值为0，随机排序后，1的键值要求上为0-8的几率是一样的。然后在这里是递减的，原因是sort()方法是依次比较的。
+// function shuffle(arr) {
+//     var i, j, temp;
+//     for (i = arr.length - 1; i > 0; i--) {
+//         j = Math.floor(Math.random() * (i + 1));
+//         temp = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//     }
+//     return arr;
+// };
+function random(min, max) {
+    if (max == null) {
+        max = min;
+        min = 0;
     }
-    for (i in o) {
-        if(o.hasOwnProperty(i)) {
-            result += i;
-        }
+    return min + Math.floor(Math.random() * (max - min + 1));
+};
+
+function shuffle(arr) {//underscore.js
+    var length = arr.length,
+        shuffled = Array(length);
+    for (var index = 0, rand; index < length; index++) {
+        rand = random(0, index);
+        if (rand !== index) shuffled[index] = shuffled[rand];
+        shuffled[rand] = arr[index];
+        //总体思路就是随机往里放呗，反正上一行每一次shuffled的最新值都是一次备份
     }
-    return result
-}
-var graph = []
-var j = 0;
-var result = 0;
-for(i = 0; i < N; i++) {
-    graph.push(String(i))
+    return shuffled;
 }
 
-for(i = 0; i < M; i++) {
-    var point1 = MArr[i][0];
-    var point2 = MArr[i][1];
-    var pos1 = 0;
-    var pos2 = 0;
-    for(j = graph.length - 1; j >= 0; j--) {
-        if(graph[j].indexOf(point1) !== -1) {
-            pos1 = j;
-        }
-        if(graph[j].indexOf(point2) !== -1) {
-            pos2 = j;
-        }
-        if(pos1 * pos2 !== 0) break;
-    }
 
-    if (pos1 !== pos2) {
-        graph[pos1] = dist(graph[pos1] + graph[pos2]);
-        graph.splice(pos2, 1);
-    }
+let arr = [1, 4, 7, 3, 2, 5, 6, 7, 8];
+for (let i = 0; i < 10; i++) {
+    console.log(shuffle(arr));
 }
-for(i = 0; i < Q; i++) {
-    var point1 = QArr[i][0];
-    var point2 = QArr[i][1];
-    var pos1 = 0;
-    var pos2 = 0;
-    for(j = graph.length - 1; j >= 0; j--) {
-        if(graph[j].indexOf(point1) !== -1) {
-            pos1 = j;
-        }
-        if(graph[j].indexOf(point2) !== -1) {
-            pos2 = j;
-        }
-        if(pos1 * pos2 !== 0) break;
-    }
-    if(pos1 === pos2) {
-        result++;
-    }
-}
-print(result)
 ```
 
 >实现数字字符格式化输出，从最后起每三个数字加个逗号
@@ -183,6 +122,26 @@ function quicksort(arr)
 arr=[1,2,3,5,56,2,2,4,5,6,7,4,2,7,9];
 var res=quicksort(arr);
 console.log(res);
+function Partition(arr,p,r){
+      let x = arr[r];
+      let i = p-1;
+      for(let j =p;j<r;j++){
+          if(arr[j]<=x){
+            i++;
+            [arr[i],arr[j]]=[arr[j],arr[i]];
+          }
+      }
+      [arr[i+1],arr[r]]=[arr[r],arr[i+1]];
+      return i+1;
+}
+function quickSort(arr,p,r){
+      let q = 0;
+      if(p<r){
+        q = Partition(arr,p,r);
+        quickSort(arr,p,q-1);
+        quickSort(arr,q+1,r);
+      }
+}
 
 ```
 
@@ -286,11 +245,3 @@ function numSplit(str){
 }
 console.log(numSplit(str));
 ```
-
-## 剑指offer
-
------------
-
-## 待看书籍
-
-* 数据结构与算法JavaScript描述

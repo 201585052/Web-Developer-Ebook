@@ -751,6 +751,9 @@ function extend(deep, target, obj) {
 
 ### ajax原生与jquery创建过程，如何缓存优化
 
+### 跨域
+
+
 ## es6
 
 ### es6的新特性
