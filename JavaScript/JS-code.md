@@ -170,7 +170,6 @@ function getJson(url){
     });
 }
 getJson("www.liao.com").then((val)=>console.log(val));
-[完整的ajax封装](https://www.jianshu.com/p/d644c398be06)
 ```
 
 ## 正则表达式

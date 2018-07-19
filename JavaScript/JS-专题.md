@@ -752,7 +752,7 @@ function extend(deep, target, obj) {
 ```
 
 
-### 跨域与通信
+### 跨域
 跨域问题一直是前端非常重要的一点，会出现在像ajax这种向其他网站发送请求的过程中（出于安全性考虑，浏览器不允许ajax跨域获取数据，当你访问地址的时候，实际上数据已经从别的域名拿过来了(可以从network上的接收包查看)，但是浏览器为了保障不被信用的数据注入本地，进行了拦截），写一个小文章简单研究一下吧～
 
 #### 同源策略
@@ -760,6 +760,169 @@ function extend(deep, target, obj) {
 
 #### 跨域的方法
 [参考](https://github.com/happylindz/blog/issues/3)
++红宝书上一个图像ping
+
+### 通信
+由对跨域的分析看了红宝书之后觉得通信部分也值得一写。主要分为页面向服务器请求数据的技术Ajax，服务器向页面推送数据的技术Comet，全双工通信和页面间的通信方案。
+
+#### Ajax（页面->服务器)
+[完整的ajax封装](https://www.jianshu.com/p/d644c398be06)
+
+#### Comet(服务器->页面)
+
+##### 实现方式
+[自己在csdn上的文章](https://blog.csdn.net/jikexueyuan5555/article/details/79343919)
+[大佬的即时通讯node代码](http://luoxia.me/code/2016/10/16/%E6%95%B0%E6%8D%AE%E6%8E%A8%E9%80%81%E4%B8%9A%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/)
+
+#### Web Sockets（全双工通信）
+>特点：
+
+使用自定义协议，连接为ws://和wss://(加密)
+
+>优点:
+
+能够在客户端和服务器之间发送非常少量的数据，而不必担心HTTP那样字节级的开销。
+
+>缺点:
+
+官方制定协议的事件比制定js 的api的时间还要慢，不支持DOM2级语法，所以要用socket.open=function()这种
+
+>readyState值：
+
+0:正在建立连接
+1:已经建立连接
+2:正在关闭连接
+3:已经关闭连接
+
+#### 页面间通信
+
+>localstorage
+
+原理：“当同源页面的某个页面修改了localStorage,其余的同源页面只要注册了storage事件，就会触发”；
+
+标签页1
+
+```HTML
+<input id="name">
+    <input type="button" id="btn" value="提交">
+    <script type="text/javascript">
+        var btn = document.getElementById('btn');
+        var inpu = document.getElementById('name');
+        var name;
+        function detectInput(){
+            setTimeout(function(){
+                name = inpu.value;
+                if(!name){
+                    detectInput();
+                }
+            },5000);
+        }
+        detectInput();
+        
+        btn.onclick = function(){
+            localStorage.setItem("Brelly",name);
+        }
+```
+标签页2
+
+```HTML
+<script type="text/javascript">
+		window.addEventListener("storage", function(event){  
+			console.log(event.key + "=" + event.newValue);  
+		});   
+</script>
+
+```
+测试：需要http-server下两个网页所在目录，不能在本地打开，这样当一个页面的值发生变化时，另一个页面也跟着发生变化
+
+>postMessage
+
+```HTML
+//a.com/index.html
+<iframe src="b.com/index.html" id="ifr">
+</iframe>
+<script>
+window.onload = function(){
+  var iframe = document.getElementById('ifr');
+  var targetOrigin = 'http://b.com'; // 若写成'http://b.com/c/proxy.html'效果一样
+                                        // 若写成'http://c.com'就不会执行postMessage了
+  iframe.contentWindow.postMessage('data to send',targetOrigin);
+}
+</script>
+
+
+
+// b.com/index.html
+<script type="text/javascript">
+  window.addEventListener('message',function(event){
+    // 通过origin属性判断消息来源地址
+    if(event.origin == 'http://a.com'){
+      console.log(event.data);
+      console.log(event.source);
+    }
+  },false);
+</script>
+```
+> websocket通过服务器广播（以下是犀牛书上的代码）
+
+客户端：
+```HTML
+<input type="text" id="input" style="width:100%;">
+    <script>
+        window.onload = function(){
+            var nick = prompt("enter your name");
+            var input  = document.getElementById('input');
+            input.focus();
+            var socket = new WebSocket("ws://"+location.host+"/");
+            socket.onmessage = function(event){//从服务器获取信息
+                var msg = event.data;
+                var node = document.createTextNode(msg);
+                var div = document.createElement('div');
+                div.appendChild(node);
+                document.body.insertBefore(div,input);
+                input.scrollIntoView();
+            }
+            //通过WebSocket发送消息给服务器端
+            input.onchange = function(){
+                var msg = nick+ ":" + input.value;
+                socket.send(msg);
+                input.value = "";
+            }
+        };
+        
+    </script>
+```
+
+服务端
+
+```js
+var http = require('http');
+var ws = require('websocket-server');
+
+var clientui = require('fs').readFileSync("test.html");
+
+var httpserver = new http.Server();
+httpserver.on("request",function(request,response){
+    if(request.url == '/'){
+        response.writeHead(200,{"Content-Type":"text/html"});
+        response.write(clientui);
+        response.end();
+    }
+    else{
+        response.writeHead(404);
+        response.end();
+    }
+});
+//在http服务器上包装一个websocket服务器
+var wsserver = ws.createServer({server:httpserver});
+wsserver.on("connection",function(socket){
+    socket.send("Welcome to the chat room.");
+    socket.on("message",function(msg){
+        wsserver.broadcast(msg);
+    })
+})
+wsserver.listen(8000);
+```
 
 ---
 
