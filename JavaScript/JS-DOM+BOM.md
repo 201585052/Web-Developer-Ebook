@@ -13,6 +13,17 @@ DOM：把文档当成一棵树模型，将HTML节点转成js的变量；W3C的�
 
 [参考](https://blog.csdn.net/anythings/article/details/51240133)
 
+* DOM文档加载顺序
+
+```txt
+(1) 解析HTML结构。
+(2) 加载外部脚本和样式表文件。
+(3) 解析并执行脚本代码。
+(4) 构造HTML DOM模型。//ready
+(5) 加载图片等外部文件。
+(6) 页面加载完毕。//load
+```
+
 * DOM 组成
 
 ```txt

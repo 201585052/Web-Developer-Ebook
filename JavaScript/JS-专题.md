@@ -259,7 +259,6 @@ console.log(dosomething(addd,1,2));
 })(jQuery);
 ```
 
-### 详解this
 
 ### js单线程
 
@@ -929,10 +928,39 @@ wsserver.listen(8000);
 ## es6
 
 ### es6的新特性
+[请见](https://blog.csdn.net/u012468376/article/details/54565068)
+相对比较全的包括第六变量类型symbol、箭头函数独特之处和解构赋值等）
 
-### 箭头函数的理解
+#### 补充
 
-### 解构赋值
+1、我觉得箭头函数就是用来解决闭包第二个return指向windows的这种情况
+
+2、箭头函数用完即丢感觉有点儿爽。。。。
+
+3、写了一下箭头函数顺便也把this的问题解决了，其实在出现箭头函数问题之前都是用that解决的2333
+
+```js
+sth = 456;
+var thistest = {
+    sth:123,
+    dothis:function(){
+        return (function(){
+            console.log(this.sth);
+        })();
+    },
+    dothat:function(){
+        console.log(this.sth);
+    },
+    doArrow:() => console.log(sth),//箭头函数会默认把所在函数环境的this绑在自己身上
+    dothatArrow:function(){
+        return (() => console.log(this.sth))();
+    }
+};
+thistest.dothis();//456
+thistest.dothat();//123
+thistest.doArrow();//456
+thistest.dothatArrow();//123
+```
 
 ### promise专题
 
@@ -977,9 +1005,7 @@ foo(10,20)
 });
 ```
 
-#### generator
-
-#### 第六变量symbol
+### generator迭代器与aync
 
 ------------
 
