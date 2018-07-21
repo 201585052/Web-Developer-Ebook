@@ -414,6 +414,10 @@ console.log(3);
 
 ### 原型与原型链
 
+### new、_proto_、prototype
+
+[参考](http://www.cnblogs.com/chuaWeb/p/jQuery-1-9-1-frame1.html)
+
 #### 作用域链的理解
 
 ------------

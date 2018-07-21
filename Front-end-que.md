@@ -4,31 +4,11 @@ __前言:__
 有一些概念不总是记得住的，面试的时候不要因为一些基础概念的考察而丢分
 
 -----------
-<!-- TOC -->
-
-<!-- - [Web 前端开发面试题](#web-前端开发面试题)
-    - [HTML](#html)
-    - [浏览器内核，渲染，兼容性](#浏览器内核渲染兼容性)
-    - [计网及HTTP](#计网及http) -->
-
-<!-- /TOC -->
 
 ## HTML
 
 * HTML5新特性
 * HTML5移动兼容性
-
-* 常见的网络攻击有哪些，如何防范？
-
-```txt
-xss与rsxf
-```
-
-* 前端如何实现性能优化，突然白屏了怎么办？
-
-* 如何对当前前端性能进行测试
-
-* HTML5存储与缓存
 
 ## 浏览器内核，渲染，兼容性
 
@@ -107,55 +87,14 @@ xss与rsxf
 
 ```
 
-* js脚本如何加载，同步异步，defer和async
-
 * 那些操作会造成内存泄漏？
 
 * 检测浏览器版本版本有哪些方式？
 
 * Polyfill及Polyfill方案?
 
+## webpack
+
 * Webpack热更新实现原理(同理这只是个模版）?
 
 * es6 如何编译成es5
-
-```txt
-  1. Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)
-  2. 页面首次打开后，服务端与客户端通过 EventSource 建立通信渠道，把下一次的 hash 返回前端
-  3. 客户端获取到hash，这个hash将作为下一次请求服务端 hot-update.js 和 hot-update.json的hash
-  4. 修改页面代码后，Webpack 监听到文件修改后，开始编译，编译完成后，发送 build 消息给客户端
-  5. 客户端获取到hash，成功后客户端构造hot-update.js script链接，然后插入主文档
-  6. hot-update.js 插入成功后，执行hotAPI 的 createRecord 和 reload方法，获取到 Vue 组件的 render方法，重新 render 组件， 继而实现 UI 无刷新更新。
-```
-
-## 计网及HTTP
-
-* 如何减少HTTP请求数
-
-```txt
-尽量减少页面的HTTP请求，可以提高页面载入速度。
-减少页面中的元素
-　　网页中的的图片、form、flash等等元素都会发出HTTP请求，尽可能的减少页面中非必要的元素，可以减少HTTP请求的次数。　　图片地图（Image Maps）也就是图像热点，图像地图就是把一张图片分成若干区域,每个区域指向不同的URL地址，这些区域也称为热点。Image Maps只适用于连续的图标。
-CSS Sprites（CSS精灵）
-　　图片是增加HTTP请求的最大可能者，把全站的图标都放在一个图像文件中，然后用CSS的background-image和background-position属性定位来显示其中的一小部分。
-　　这种方法把CSS写到HMTL文件里，而不采用外部调用，与Div+CSS中「表现与内容分离、把CSS都立出来」相悖，缺点就是不利于SEO；当然，从整体上减少HTTP请求、提高页面载入速度，是有利于SEO的。JS文件和CSS文件只有一个合并脚本和CSS文件，可以减少了HTTP请求。有的人喜欢把CSS分成结构清晰的几个部分，比如base.css、header.css、mianbody.css、 footer.css这样对页面的维护和修改是比较方便的，但是对加快服务器响应时间就存在问题了。少用location.reload()使用location.reload() 会刷新页面，刷新页面时页面所有资源（css，js，img等）会重新请求服务器。建议使用location.href="当前页url" 代替location.reload() ，使用location.href 浏览器会读取本地缓存资源。
-动态页面静态化
-　　动态网页实际上并不是独立存在于服务器上的网页文件，只有当用户请求时服务器才返回一个完整的网页。
-　　用户访问动态页面需要与数据库服务器进行数据交换。
-```
-
-* 如何实现两个页面间的通信
-
-    postMessage API
-    支持两个页面跨域；只能传递字符串数据；参考 window.open；
-
-    直接引用
-    适用于两个页面在同一域；可以传递对象数据（对象数据使用 instanceof 做类型判断时有坑）；参考 window.open；
-
-    WebSocket 服务器中转
-    需要页面都与服务器建立 WebSockets 连接；支持跨域；参考 WebSocket
-
-    localStorage 事件
-    要求两页面在同一域；数据可以通过 localStorage 传递；参考 localStorage 的 'storage' 事件；
-
-* Web即时通信commet与SSE
