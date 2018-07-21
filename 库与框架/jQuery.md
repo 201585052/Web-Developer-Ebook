@@ -37,7 +37,7 @@ jQuery的写法其实就是一个大的构造器模式(function(window,undefined
 
 > 现在
 
-jQuery的总体设计是AMD模块规范（require.js)，把独立的功能独立成小模块实现，这样更有利于以后对具体某项功能或者兼容性的实现,大体上是这样的开头
+jQuery的总体设计是AMD模块规范（require.js)，把独立的功能独立成小模块实现，这样更有利于以后对具体某项功能或者兼容性的实现,比如typeof,extend,ajax,大体上是这样的开头
 
 ```js
 define( [
