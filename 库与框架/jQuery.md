@@ -13,6 +13,12 @@ __前言：__
 
 * 5、兼容性的保证
 
+代码重点部分有整体,sizzle引擎，事件系统，Dom操作和Ajax等。
+
+而新时代我对jQuery的理解:jQuery的出现当初就是为了操作DOM比较方便，而React基本不会对原生的DOM进行操作，所以jQuery的源码部分更多是作为教科书来用的，毕竟在React实际开发之中肯定会有类似函数的封装。
+
+ps:连jQuery的作者都去研究React了orz
+
 -----------
 ## jQuery原理层面
 
@@ -28,11 +34,12 @@ jQuery的写法其实就是一个大的构造器模式(function(window,undefined
 
 先定义了各种基础变量函数，然后定义jQuery.fn=jQuery.prototype={
 
-    1、init,参数(selector,context,rootjQuery),jQuery.fn.init.prototype = jQuery.fn;
+    1、init,参数(selector,context,rootjQuery),jQuery.fn.init.prototype = jQuery.fn;通过push_back函数，prevobj保存住当前对象，返回实现链式调用
     2、各种each,slice,ready函数的定义
     3、extend函数定义
     4、通过extend函数拓展各种功能
     5、sizzle选择器部分是独立的，我觉得应该要精通正则表达式才可以看吧。。。
+    6、用钩子函数完成兼容性的代码修正
 }
 
 > 现在
@@ -423,6 +430,8 @@ jQuery.extend = jQuery.fn.extend = function () {
 ```
 
 ### jQuery 实现ajax
+
+巨难，竟然还包括对header中content-type 和E-tag头的分析，简直了。。。
 
 ---
 

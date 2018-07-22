@@ -93,6 +93,15 @@ __前言:__
 
 * Polyfill及Polyfill方案?
 
+## 计网
+
+* 从输入URL到页面加载完成的过程中都发生了什么事
+
+[主要](https://www.jianshu.com/p/71cf7f69eca8)
+[具体](https://segmentfault.com/a/1190000006879700)
+
+ps:突然意识到重绘与重排的重排是reflow，也就是书上写的回流
+
 ## webpack
 
 * Webpack热更新实现原理(同理这只是个模版）?
