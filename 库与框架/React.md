@@ -3,7 +3,9 @@
 __前言：__
 React和Vue作为近几年前端大火面向未来的框架，基本属于必考，所以要学习一下啊
 
-* snabbdom体验虚拟dom与diff算法
+## 原理层
+
+### snabbdom体验虚拟dom与diff算法
 
 >snabbdom 基本使用，控制台查看更新部分
 
@@ -268,9 +270,7 @@ function replaceNode(vnode,newVode) {
 }
 ```
 
-* React的生命周期
-
-* React的diff算法和虚拟Dom
+### React的diff算法和虚拟Dom
 
 >什么是diff算法
 
@@ -287,7 +287,7 @@ function replaceNode(vnode,newVode) {
     虚拟DOM，用js来模拟dom结构；将dom对比操作放在js层，提高效率
 >
 
-* React和Vue的异同和特点
+### React和Vue的异同和特点
 
 >不同点
 
@@ -305,19 +305,14 @@ function replaceNode(vnode,newVode) {
 
     1、国内vue文档易读易学，滴滴专门vue，社区强大
     2、react适合团队水平高的
-* React组件化
+### React组件化
 > 说一下对组件化的理解
 
     两点：封装与复用，很像面向对象，封装继承多态
          封装：封装视图与数据和变化逻辑即数据驱动视图变化
          复用：通过props值不同进行传递
 
->
->
->
->
-
-* jsx相关
+### jsx相关
 
 >特点总结
 
@@ -342,7 +337,7 @@ function replaceNode(vnode,newVode) {
     语法糖，需要在本地被解析成js才行，自然无法在浏览器端运行（vue的模版也要被解析成js），
     解析后的形式是React.createElement(),和h函数的参数非常像
     一种独立标准，可被其他项目使用
-* React状态
+### React状态
 
 >说一下setState的过程
 
@@ -404,3 +399,7 @@ ____
 * 受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别
 
 * refs 是什么?
+
+---
+
+参考书：深入React技术栈
