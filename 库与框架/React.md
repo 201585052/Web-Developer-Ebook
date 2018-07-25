@@ -1,7 +1,7 @@
 # React 专题
 
 __前言：__
-React和Vue作为近几年前端大火面向未来的框架，基本属于必考，所以要学习一下啊
+React的生态圈很大，很有野心，要好好学
 
 ## 原理层
 
@@ -337,6 +337,7 @@ function replaceNode(vnode,newVode) {
     语法糖，需要在本地被解析成js才行，自然无法在浏览器端运行（vue的模版也要被解析成js），
     解析后的形式是React.createElement(),和h函数的参数非常像
     一种独立标准，可被其他项目使用
+    
 ### React状态
 
 >说一下setState的过程
@@ -366,39 +367,149 @@ addTitle(title) {
     4、即使是每次重新渲染，用户也看不到其中的效果
     所以多个setState在执行的时候直接最后一次赋值会覆盖前面的操作
 
->setState的过程：
+>setState的过程(当组件的setState函数被调用之后，发生了什么？)：
 
     每个组件实例都有renderComponent方法
     执行renderComponent重新执行实例的render
     render函数返回newVnode 然后拿到preVnode
     执行patch（preNode,newVnode)
-* 其他：
+
+### React-router 路由的实现原理（感觉不是很透彻，回头有空看看源码写个博文）
+
+基本原理（嗯。。。）：view和URL保持同步，用户在Web界面进行操作时的变化会记录在浏览器的历史记录里，通过交互或手动输入的方式，同步或异步向服务端发送请求获取资源，重新绘制UI.
+
+### 其他：
 
 React.createElement相对于h增加了对自定义组件构造函数的考虑：解析过程：初始化实例后render
 
 ____
 
-## 深入React心得
+## React应用层
 
-回头好好总结下，不要让知识点乱七八糟的
+### React 使用场景
 
-* react 生命周期
+组件化开发适用于较复杂的系统开发，轻且快、只是一个v，需要和其他的router库等配合使用，本身并不像angular那样是个完整的生态。
 
-* React 使用场景
+### React 生命周期
 
-* 实现组件有哪些方式
+React组件从广义上可份挂载、渲染、卸载几个阶段，生命周期可分为两类
 
-* shouldComponentUpdate函数有什么作用？
+* 当组件挂载或者卸载时
 
-* 当组件的setState函数被调用之后，发生了什么？
+* 组件接受到新数据而渲染时
 
-* 为什么循环产生的组件中要利用上key这个特殊的prop？
+![示意图](../img/React-life-time.jpeg)
 
-* React-router 路由的实现原理？
+### 实现组件有哪些方式
 
-* 受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别
+* React.createClass:最传统、兼容性最好的方法，一直都是react官方唯一指定的组件写法,调用几次button就会创建几次button实例
 
-* refs 是什么?
+```js
+const Button = React.createClass({
+    getDefaultProps(){
+        return {
+            color:'blue',
+            tet:'Confirm'
+        };
+    },
+    render() {
+        const { color, text} = this.props;
+        return (
+            <button className={`btn-${color}`}>
+                <em>liao</em>
+            </button>
+        )
+    }
+})
+```
+
+* es 6 classes： 就是用类来实现，调用类实现的组件会创建实例对象。
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Index from './components/index';
+import Content from './components/content';
+import Demo from './components/demo';
+import About from './components/about';
+import {HashRouter as Router,Route,Link} from 'react-router-dom';
+import 'antd/dist/antd.css';
+require('es6-promise').polyfill();
+
+class Root extends React.Component{
+    render(){
+        return (
+                <Router>
+                        <div>
+                            <Route exact path="/" component={Index} />
+                            <Route path="/contents/:num" component={Content} />
+                            <Route path="/tags/:tagName" component={Index} />
+                            <Route path="/demos" component={Demo} />
+                            <Route path="/about" component={About} />
+                        </div>
+                </Router>
+        );
+    }  
+}
+
+ReactDOM.render(<Root />, document.getElementById('root'));
+```
+
+* 无状态函数：该种组件又叫无状态组件，创建时始终保持了一个实例，避免了不必要的检查和内存分配，只传入props和context两个参数，不存在state与生命周期,官方也很推崇。
+
+```jsx
+function Button({ color = 'blue',text = 'Confirm' }){
+    return (
+        <button className = {`btn-${color}`}>
+            <em>liao</em>
+        </button>
+    );
+}
+```
+
+### shouldComponentUpdate函数有什么作用？
+
+组件自身state更新时会依次执行shouldComponentUpdate、componentWillUpdate、componentDidUpdate,他是一个特别的方法，接收需要更新的props和state，使在必要时更新，不需要时不更新，因此当方法返回flase时，组件不再向下执行生命周期方法。它不一定总会起到性能优化的作用，因为虽然是"重点"比较（就是不是所有属性都进行比较）,但是比较的过程仍然相当耗时不一定比优化的效果好
+[大佬实际测量](https://blog.csdn.net/u012937029/article/details/76522930)
+
+### 为什么循环产生的组件中要利用上key这个特殊的prop？
+
+因为不用会报警啊。。。这个有点讨厌，但实质上就是用来标示当前项的唯一性的props，有点儿像数据库里的id
+
+### 受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别
+
+#### 受控组件：
+
+每当表单的状态发生变化时，都会被写入组件的state中，这种组件在React中成为受控组件。更新state流程一般是:初始state中设置表单默认值->表单变化调用onChange事件处理器->通过合成e，拿到改变状态，更新state->setState触发视图重新渲染。props传入，onchange写回state这就完成了数据双向绑定
+
+#### 非受控组件：
+
+没有value props，使用defaultValue和defaultChecked prop来表示组件的默认状态，值不受组件自身state和props控制，虽然性能损耗相对低一点，但是不提倡使用它，而是用Flux/Redux应用架构等方式达到同一组件状态的目的
+
+### refs 是什么?
+
+React组件中非常特殊的prop，可以附加到任何一个组件上。组件被调用时会新建一个该组件的实例，而refs就会指向这个实例。
+
+```js
+...
+<div ref={(node) => this.node = node}>
+
+//这里取的的node既是实例也是原生的DOM
+```
+
+我们也可以把它和findDOMNode配合使用来获取原生DOM
+
+```js
+componentDidMount(){
+    const myDiv = this.refs.myDiv;
+    const myDom = ReactDOM.findDOMNode(myDiv);
+}
+render(){
+    return (
+        <div ref="myDiv">
+    );
+}
+```
 
 ---
 
