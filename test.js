@@ -1,20 +1,15 @@
-function person(name,sex,score){
-    this.name = name;
-    this.sex = sex;
-    this.score = score;
-}
-person.prototype.constructor={
-    say:function(){
-        console.log("My name is " + this.name + "score:" + this.score);
-    }
-};
-function getExscore(name){
-    var scorearr = {"熊大":100,"熊二":200};
-    return scorearr[name];
-}
-var xiongda = new person("熊大","公",200);
-var xionger = new person("熊二","公",100);
-xiongda.getExscore(xiongda.name);
-xionger.getExscore(xionger.name);
-xiongda.say();
-xionger.say();
+var Sys = {};
+        var ua = navigator.userAgent.toLowerCase();
+        var s;
+        (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+        (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+        (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+        (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+        (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+
+        //以下进行测试
+        if (Sys.ie) document.write('IE: ' + Sys.ie);
+        if (Sys.firefox) document.write('Firefox: ' + Sys.firefox);
+        if (Sys.chrome) document.write('Chrome: ' + Sys.chrome);
+        if (Sys.opera) document.write('Opera: ' + Sys.opera);
+        if (Sys.safari) document.write('Safari: ' + Sys.safari);
