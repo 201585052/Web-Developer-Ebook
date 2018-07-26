@@ -67,10 +67,10 @@ __前言:__
 
 ### 除了canvas和js，用什么实现过动画吗？
 
-    window.requestAnimationFrame()
+window.requestAnimationFrame()
 
-    [参考1](https://blog.csdn.net/w2765006513/article/details/53843169)
-    [参考2](https://segmentfault.com/a/1190000010229232)
+[参考1](https://blog.csdn.net/w2765006513/article/details/53843169)
+[参考2](https://segmentfault.com/a/1190000010229232)
 
 ### js三大对象
 
