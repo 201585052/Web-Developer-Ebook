@@ -145,6 +145,33 @@ function quickSort(arr,p,r){
 
 ```
 
+>数组去重
+
+```js
+let arr = [];
+function random(min,max){
+    return Math.floor((max-min+1)*Math.random())+min;
+}
+for(let i = 0;i<10;i++){
+    arr[i] = random(10,15);
+}
+console.log("之前",arr);
+// arr.sort((x,y) => (x-y));
+// arr = arr.filter((x,y) => arr.indexOf(x) === y);
+// console.log("之后",arr);
+let hashT = {};
+let ans = [];
+for(var i of arr){
+    if(!hashT[i]){
+        hashT[i] = 1;
+        ans.push(i);
+    }else{
+        hashT[i]++;
+    }
+}
+console.log("之后",ans);
+```
+
 >手写ajax传值过程
 
 ```js
