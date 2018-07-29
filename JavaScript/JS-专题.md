@@ -575,7 +575,7 @@ console.log(hh.friends);
 
 ```
 
-#### 对象的深浅拷贝
+### 对象的深浅拷贝
 
 >前提
 
@@ -585,8 +585,8 @@ console.log(hh.friends);
 var a = 3;
 var b = a;
 b = 4;
-console.log(b);
-console.log(a);
+console.log(b);//4
+console.log(a);//3
 var c = function(){
     console.log("hey jude");
 }
@@ -594,8 +594,8 @@ var d = c;
 d = function() {
     console.log("Brelly liaoliao");
 }
-c();
-d();
+c();//hey jude
+d();//Brelly liaoliao ,注意这里表面上是函数实际上也是简单变量造成深拷贝
 var obj1 = {
     name:"liaoliao",
     height:150
@@ -778,6 +778,7 @@ function extend(deep, target, obj) {
 [大佬的即时通讯node代码](http://luoxia.me/code/2016/10/16/%E6%95%B0%E6%8D%AE%E6%8E%A8%E9%80%81%E4%B8%9A%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/)
 
 #### Web Sockets（全双工通信）
+
 >特点：
 
 使用自定义协议，连接为ws://和wss://(加密)

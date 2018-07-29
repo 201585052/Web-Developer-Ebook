@@ -1,21 +1,22 @@
-var arr = [4,5,1,3,2,4,7];
-//var arr = [3,4,5,7,8,2,5,9];
-
-function quickSort(arr){
-    if(arr.length<=1){
-        return arr;
-    }
-    let left = [];
-    let right = [];
-    let mid = Math.floor(arr.length/2);
-    let midval = arr.splice(mid,1);
-    for(let i = 0; i<arr.length;i++){
-        if(arr[i]<midval){
-            left.push(arr[i]);
-        }else{
-            right.push(arr[i]);
-        }
-    }
-    return quickSort(left).concat(midval,quickSort(right));
+var a = 3;
+var b = a;
+b = 4;
+console.log(b); //4
+console.log(a); //3
+var c = function(){
+    console.log("hey jude");
 }
-console.log(quickSort(arr));
+var d = c;
+d = function() {
+    console.log("Brelly liaoliao");
+}
+c();//b
+d();//b
+var obj1 = {
+    name:"liaoliao",
+    height:150
+};
+var obj2 = obj1;
+obj2.name = "俊";
+console.log(obj1.name);//jun
+console.log(obj2.name);//这里我们的obj2的改动影响的obj1的改动
