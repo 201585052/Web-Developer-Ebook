@@ -199,6 +199,18 @@ function getJson(url){
 getJson("www.liao.com").then((val)=>console.log(val));
 ```
 
+>阻止事件冒泡
+
+```js
+function stopBubble(e) {
+    if (e && e.stopPropagation) { //非IE 
+        e.stopPropagation();
+    } else { //IE 
+        window.event.cancelBubble = true;
+    }
+}
+```
+
 ## 正则表达式
 
 >用户名正则，4到16位（字母，数字，下划线，减号）

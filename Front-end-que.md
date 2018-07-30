@@ -63,6 +63,15 @@ __前言:__
 
 ### 事件冒泡与事件捕获，事件委托
 
+## CSS
+
+### CSS 中 inline 元素可以设置 padding 和 margin 吗？
+
+首先inline元素的高度和宽度是由元素中的呢内容（包括字体大小和行高影响）决定的。对inline元素设置高宽是无效的，如果你想对元素设置高宽的话，可以将元素设置为inline-block.
+
+inline元素也是符合盒子模型的，所以为她设置margin和padding是有效的。
+而从视觉效果上看左右有效，上下无效
+
 ## javascript
 
 ### 除了canvas和js，用什么实现过动画吗？
@@ -192,6 +201,10 @@ if (Sys.safari) document.write('Safari: ' + Sys.safari);
 [具体](https://segmentfault.com/a/1190000006879700)
 
 ps:突然意识到重绘与重排的重排是reflow，也就是书上写的回流
+
+### Set-cookie: http-only 是干什么用的？
+
+如果cookie中设置了HttpOnly属性，那么通过js脚本将无法读取到cookie信息，这样能有效的防止XSS攻击，窃取cookie内容，这样就增加了cookie的安全性，即便是这样，也不要将重要信息存入cookie
 
 ## Webpack（感觉用都没有用太好，到水平了再去看源码吧orz）
 

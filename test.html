@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-	.container {
-	 /* margin-left: 220px;
-	    margin-right: 220px; */
-	}
-	.main {
-	    float: left;
-	    width: 100%;
-	    height: 200px;
-	    background-color: green;
-	}
-	.left {
-	    float: left;
-	    width: 200px;
-	    height: 200px;
-	    margin-left: -100%;
-        /*  position: relative;
-	    left: -220px;         */
-	    background-color: red;
-	}
-	.right {
-	    float: left;
-	    width: 200px;
-	    height: 200px;
-	    margin-left: -200px;
-	/*  position: relative;
-	    right: -220px;         */
-	    background-color: blue;
-	}
-    </style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	.parent{width:150px;background:#ddd;clear:both; }
+	.l-box{float:left;width:100px;background:#bbb;}
+	.r-box{float:right;width:100%;margin-left:-100px;background:#999;}
+	.r-content{margin-left:100px;}
+  </style>
 </head>
 <body>
-    <div class="container">
-	<div class="main">
-		<div class="inner">123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123</div>    <!-- 新增inner -->
-	</div>
-	<div class="left"></div>
-	<div class="right"></div>
+  <div class="parent">
+  <div class="r-box">
+    <div class="r-content">
+      右边自适应1 右边自适应2 右边自适应3
     </div>
+  </div>
+  <div class="l-box">
+    左边固定1  左边固定2 左边固定3
+  </div>
+</div>
 </body>
 </html>
