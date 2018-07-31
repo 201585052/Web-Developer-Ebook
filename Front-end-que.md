@@ -74,9 +74,14 @@ inline元素也是符合盒子模型的，所以为她设置margin和padding是�
 
 ## javascript
 
-### 除了canvas和js，用什么实现过动画吗？
+### 用什么实现过动画吗？（或者说逐帧动画）
 
-window.requestAnimationFrame()
+canvas是表现方式不是方法总是。。。。，方法倒是下面几个，除了第一个也都算用过。
+
+* gif动画
+* window.requestAnimationFrame()
+* setInterval
+* css 3 的animation @keyframes
 
 [参考1](https://blog.csdn.net/w2765006513/article/details/53843169)
 [参考2](https://segmentfault.com/a/1190000010229232)
@@ -132,6 +137,9 @@ function replacer(k,v){
 liao = JSON.stringify(liao,replacer);
 console.log(liao);
 ```
+### e.target与e.currentTarget的区别
+
+前者指向触发事件监听的对象，后者指向添加监听事件的对象。
 
 ### 那些操作会造成内存泄漏？
 
@@ -254,11 +262,117 @@ http状态码是表示服务器对请求的响应状态，主要分为以下几�
 
 504（Gateway Timeout），作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。
 
+### post时content-type的四种形式
+
+[content-type](https://blog.csdn.net/zhanglf02/article/details/76201181)
+
+### 前端向后端传输数据的方法有哪些
+
+> ajax
+
+这个就不解释了吧，post过去
+
+> form
+
+在action中请求后台的方法。但是如果数值在传给后台之前需要校验，可以在form中的onsubmit调用js方法进行校验，js方法的返回值为true时，触发action，返回false时，action不起作用
+
+>通过dom获取标签，触发标签的submit方法，直接提交数据到后台
+
+```js
+function query() {
+ 
+    var inputs = document.getElementsByName("sex");//对象是单选选项
+ 
+    for(var i = 0; i < inputs.length; i++) {
+ 
+        if(inputs[i].checked) {//是否选中
+  
+            varsex = inputs[i].value;
+ 
+            document.getElementById("query").action = projectName+"/query.do?currentPage=1&stsex="+ sex;
+ 
+            break;
+ 
+        }else{
+ 
+            document.getElementById("query").action = projectName+"/query.do?currentPage=1";
+ 
+        }
+ 
+    }
+ 
+    document.getElementById("query").submit();//提交到后台
+ 
+}
+ 
+
+```
+
+### 常见的http请求方法
+
+> OPTIONS
+
+返回服务器针对特定资源所支持的HTTP请求方法，也可以利用向web服务器发送‘*’的请求来测试服务器的功能性
+
+> HEAD
+
+向服务器索与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以再不必传输整个响应内容的情况下，就可以获取包含在响应小消息头中的元信息。(简单说获取报文首部)
+
+> GET
+
+向特定的资源发出请求。它本质就是发送一个请求来取得服务器上的某一资源。资源通过一组HTTP头和呈现数据（如HTML文本，或者图片或者视频等）返回给客户端。GET请求中，永远不会包含呈现数据。
+
+> POST
+
+向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 Loadrunner中对应POST请求函数：web_submit_data,web_submit_form
+
+> PUT
+
+向指定资源位置上传其最新内容
+
+> DELETE
+
+请求服务器删除Request-URL所标识的资源
+
+> TRACE
+
+回显服务器收到的请求，主要用于测试或诊断
+
+> CONNECT
+
+HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器
+
+> 补充
+
+方法名称是区分大小写的，当某个请求所针对的资源不支持对应的请求方法的时候，服务器应当返回状态码405（Mothod Not Allowed）；当服务器不认识或者不支持对应的请求方法时，应返回状态码501（Not Implemented）。
+
+### get与post的区别
+
+[哇这个](https://www.cnblogs.com/logsharing/p/8448446.html)
+
+### 状态码301与302
+
+301相对302是永久重定向，会计算新进入的流量（SEO相关），一般末尾忘记加斜杠的话会有这个。还有近些年大量http升级到https好像就用到了永久重定向也就是301
+
+### Session与Cookie区别与联系
+
+[请见](https://www.cnblogs.com/endlessdream/p/4699273.html)
+
+### 什么是cors里的预检
+
+对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），浏览器必须首先使用 OPTIONS 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。服务器确认允许之后，才发起实际的 HTTP 请求。在预检请求的返回中，服务器端也可以通知客户端，是否需要携带身份凭证（包括 Cookies 和 HTTP 认证相关数据）。
+
 ## Webpack（感觉用都没有用太好，到水平了再去看源码吧orz）
 
 ### Webpack原理
 
 ### Webpack热更新即webpack-dev-server原理
+
+## 以下是系列经典小问题
+
+* JS中的this了解吗，this指向是执行时定义还是什么时候定义的，箭头函数的this指向呢
+
+
 
 
 

@@ -5,6 +5,8 @@ HTML5 提供了两种在客户端存储数据的新方法：
 * localStorage - 没有时间限制的数据存储
 * sessionStorage - 针对一个 session 的数据存储
 
+
+
 [借鉴](http://www.w3school.com.cn/html5/html_5_webstorage.asp)
 
 ## localStorage
@@ -137,8 +139,9 @@ else
 }
 document.write("Visits " + sessionStorage.pagecount + " time(s) this session.");
 ```
+以下是除了两种新形式存储外其他形式的存储
 
-## HTML 5 应用缓存 manifest
+## HTML 5 应用缓存 manifest（几乎已废弃）
 
 __评价__：坑多不建议使用，比如改变了引用的缓存的css内容，不会产生样式改动而是需要手动更改manifest内部的内容，好像下载js方面也会有问题。
 
@@ -148,6 +151,23 @@ __评价__：坑多不建议使用，比如改变了引用的缓存的css内容�
 
 cookie不算是HTML5才出现的，但是他还是有.[自己以前的理解](https://blog.csdn.net/jikexueyuan5555/article/details/79275177)
 
+>cookie的参数和本质
+
+这个可以通过chrome开发者工具里面的Application查看和修改，也可以自发document.cookie,两者结合发现它的本质就是个字符串。（大小限制差不多都为4000多KB)
+参数：
+
+Name |
+Value |
+Domain |
+Path |
+Expires |
+Size |
+HTTP |
+Secure |
+SameSite |
+
+
+>封装
 
 然后网上关于cookie封装操作的代码有很多，现在可以来看一下某大佬的.
 
@@ -171,7 +191,7 @@ CookieUtil=｛
       cookies+=";";
       var start=cookies.indexOf(key);
       if(start<=-1){ return null; }  //说明不存在该cookie
-      var end=cookies.indexOf(";",start);
+      var end=cookies.indexOf(";",start);//第二个参数是起始搜索位置
       var value=cookies.slice(start+key.length+1,end);
       return unescape(value);
     },
@@ -183,3 +203,8 @@ CookieUtil=｛
 ｝
 
 ```
+
+## Session
+
+[Session机制](http://justsee.iteye.com/blog/1570652)
+

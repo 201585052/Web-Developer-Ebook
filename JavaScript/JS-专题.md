@@ -40,7 +40,27 @@ __前言:__
     gettype.call([])            //[object Array]
     gettype.call(function(){})  //[object Function]
 
->注意两种判定方法的大小写。。。
+注意两种判定方法的大小写。。。
+
+>判断{}空对象
+
+```js
+var test = {};
+if(JSON.stringify(test) == '{}'){
+	console.log("方法1");
+}
+try{
+	for(var i in test){
+		throw new Error('不是空对象');
+	}
+	console.log("方法2");//此方法后被封装到jQuery的$.isEmptyObject
+}catch(e){
+	console.log(e);
+}
+if(!(Object.getOwnPropertyNames(test).length)){console.log("方法3");}
+if(!(Object.keys(test).length)){console.log("方法4");}//es6
+
+```
 
 ------------
 
@@ -348,6 +368,10 @@ arr.forEach(function(index,value,arr){
 </html>
 ```
 
+>js的四种异步方式
+
+[参考](https://www.cnblogs.com/zuobaiquan01/p/8477322.html)
+
 #### 事件循环与任务队列
 
 >事件循环
@@ -456,7 +480,14 @@ for(var i=1;i<=4;i++){
 
 ### 原型与原型链
 
-### new、_proto_、prototype
+#### 构造函数
+
+#### this
+
+[cherry的文章](https://juejin.im/post/59bfe84351882531b730bac2)
+和自己原来对this的理解差不多，其中的指向最后一次调用的思想嗯。。。。
+
+##### new、_proto_、prototype
 
 [参考](http://www.cnblogs.com/chuaWeb/p/jQuery-1-9-1-frame1.html)
 
@@ -987,6 +1018,7 @@ wsserver.listen(8000);
 3、写了一下箭头函数顺便也把this的问题解决了，其实在出现箭头函数问题之前都是用that解决的2333
 
 ```js
+
 sth = 456;
 var thistest = {
     sth:123,
@@ -1011,7 +1043,7 @@ thistest.dothatArrow();//123
 
 ### promise专题
 
->race与all 小尝试
+>race与all 小尝试(all是并行请求)
 
 ```js
 // var p1=Promise.resolve(43);
@@ -1051,8 +1083,65 @@ foo(10,20)
     console.log( x,y );
 });
 ```
+>promise 发送串行并行请求
 
-### generator迭代器与aync
+```js
+/**
+ * 创建promise
+ * @param {Number} value 
+ */
+function makePromise (value) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value);
+    }, Math.random() * 1000)
+  })
+}
+/**
+ * 打印结果
+ * @param {Number} value 
+ */
+function print (value) {
+  return value
+}
+
+let promises = [1, 3, 4, 5, 6].map((item, index) => {
+  return makePromise(item)
+});
+
+// 并行执行
+Promise.all(promises)
+.then(() => {
+  console.log('done')
+})
+.catch(() => {
+  console.log('error')
+})
+
+// 串行执行
+let parallelPromises = promises.reduce(
+  (total, currentValue) => total.then(() => currentValue.then(print)),Promise.resolve()
+)
+
+parallelPromises
+.then(() => {
+  // console.log('done')
+})
+.catch(() => {
+  console.log('done')
+})
+```
+### generator迭代器
+
+>generator发送穿行并行请求
+
+>generator自动化执行
+
+### async/await
+
+>async/await发送串行并行请求
+
+[async/await基础](https://blog.csdn.net/juhaotian/article/details/78934097)
 
 ------------
 
