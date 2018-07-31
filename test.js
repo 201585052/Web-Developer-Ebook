@@ -1,12 +1,35 @@
-async function getData(){
-	//请求数据1
-	var data1 = await new Promise((resolve) => {
-		setTimeout(() => resolve('Brelly'),1000);
-	});
-	//在1请求完之后请求2，请求2依赖请求1
-	var data2 = await new Promise((resolve) => {
-		setTimeout(() => resolve('liaoliao'),1000);
-	});
-	console.log(data2);
-}
-getData();
+/**
+ * 创建promise
+ * @param {Number} value 
+ */
+function makePromise (value) {
+	return new Promise((resolve) => {
+	  setTimeout(() => {
+	    resolve(value);
+	  }, Math.random() * 1000)
+	})
+      }
+      /**
+       * 打印结果
+       * @param {Number} value 
+       */
+      function print (value) {
+	return value
+      }
+      
+      let promises = [1, 3, 4, 5, 6].map((item, index) => {
+	return makePromise(item)
+      });
+
+      // 串行执行
+      let parallelPromises = promises.reduce(
+	(total, currentValue) => total.then(() => currentValue.then(print)),Promise.resolve()
+      )
+      
+      parallelPromises
+      .then(() => {
+	 console.log('done')
+      })
+      .catch(() => {
+	console.log('done')
+      })

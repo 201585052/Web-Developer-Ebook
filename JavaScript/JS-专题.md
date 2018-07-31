@@ -1131,9 +1131,10 @@ parallelPromises
   console.log('done')
 })
 ```
+
 ### generator迭代器
 
->generator发送穿行并行请求
+>generator发送串行并行请求
 
 >generator自动化执行
 

