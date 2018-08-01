@@ -20,6 +20,10 @@ var text = "hello i'm liaoliao";
 text[0] = text[0].toUpperCase();
 console.log(text);
 console.log(upperHead(text));
+
+//正则+es6
+//const upperHead = (text) => text.replace(/\b[a-z]/g,head => head.toUpperCase());
+//console.log(upperHead("hello liaoliao"));
 ```
 
 > 如何实现数组的随机排序
@@ -68,34 +72,6 @@ let arr = [1, 4, 7, 3, 2, 5, 6, 7, 8];
 for (let i = 0; i < 10; i++) {
     console.log(shuffle(arr));
 }
-```
-
->实现数字字符格式化输出，从最后起每三个数字加个逗号
-
-```js
-//感觉自己写得更好点对于正则考虑了小数，确实是有些麻烦
-function formalize(x){
-    var cnt=0;
-    var y=x.toString();
-    var res=[];
-    var start=y.indexOf('.')==-1?y.length-1:y.indexOf('.')-1;
-    for(var i=start;i>=0;i--)
-    {
-        res.push(y[i]);
-        cnt++;
-        if(cnt==3&&i>0)
-        {
-            cnt=0;
-            res.push(',');
-        }
-    }
-    res.reverse();
-    res=res.join("");
-    res=y.indexOf('.')==-1?res:res+'.'+y.substring(y.indexOf('.')+1);
-    console.log(res);
-}
-formalize(12345);
-formalize(1234.123);
 ```
 
 >手写快速排序
@@ -156,9 +132,11 @@ for(let i = 0;i<10;i++){
     arr[i] = random(10,15);
 }
 console.log("之前",arr);
+// 法一:
 // arr.sort((x,y) => (x-y));
 // arr = arr.filter((x,y) => arr.indexOf(x) === y);
 // console.log("之后",arr);
+//法二:
 let hashT = {};
 let ans = [];
 for(var i of arr){
@@ -170,6 +148,19 @@ for(var i of arr){
     }
 }
 console.log("之后",ans);
+//法三是真的强。。
+//const deleDupl  = (arr) => [...new Set(arr)];
+//console.log(deleDupl([1,1,1,2,3,4,5,1]));
+```
+
+>反转字符串
+
+```js
+const tranString = (arr) => [...arr].reverse().join("");
+let test = "BrellyLiao lio"
+console.log(tranString(test));
+//就注意一下哪些操作会改变原数组就好
+
 ```
 
 >手写ajax传值过程
@@ -209,6 +200,19 @@ function stopBubble(e) {
         window.event.cancelBubble = true;
     }
 }
+```
+
+
+>页面回到顶部
+
+```js
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+};
 ```
 
 ## 正则表达式
@@ -270,7 +274,8 @@ function stopBubble(e) {
 >包含中文正则
 
     var cnPattern = /[\u4E00-\u9FA5]/;
->格式化数字输出
+
+>格式化数字输出(从最后起每三个数字加个逗号)
 
 ```js
 var str = "12345678901";
@@ -281,4 +286,37 @@ function numSplit(str){
     return str.replace(re,'$1,');
 }
 console.log(numSplit(str));
+
+----------------------------
+
+//感觉自己写得更好点对于正则考虑了小数，确实是有些麻烦
+function formalize(x){
+    var cnt=0;
+    var y=x.toString();
+    var res=[];
+    var start=y.indexOf('.')==-1?y.length-1:y.indexOf('.')-1;
+    for(var i=start;i>=0;i--)
+    {
+        res.push(y[i]);
+        cnt++;
+        if(cnt==3&&i>0)
+        {
+            cnt=0;
+            res.push(',');
+        }
+    }
+    res.reverse();
+    res=res.join("");
+    res=y.indexOf('.')==-1?res:res+'.'+y.substring(y.indexOf('.')+1);
+    console.log(res);
+}
+formalize(12345);
+formalize(1234.123);
+
+---------------
+
+const toDecimalMark = num => num.toLocaleString('en-US');
 ```
+
+偶然发现的比较有趣的，哇这个真的是真大佬，30-seconds系列无敌强。。。，然后这个是国人翻译的
+[实用有趣的js代码片段](http://www.css88.com/30-seconds-of-code/)
