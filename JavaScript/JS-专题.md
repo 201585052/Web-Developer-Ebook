@@ -478,21 +478,43 @@ for(var i=1;i<=4;i++){
 
 ------------
 
-### 原型与原型链
-
-#### 构造函数
+### 原型与原型链与构造函数
 
 #### this
 
 [cherry的文章](https://juejin.im/post/59bfe84351882531b730bac2)
 和自己原来对this的理解差不多，其中的指向最后一次调用的思想嗯。。。。
 
-##### new、_proto_、prototype
+##### new、_proto_、prototype、constructor
 
-[参考](http://www.cnblogs.com/chuaWeb/p/jQuery-1-9-1-frame1.html)
+>简单版理解
+
+我觉得这种概念用图说话最好，这个图简直比红宝书还要简洁明了
+
+![简图](../img/sim-prototype.jpeg);
+
+>复杂版理解
+
+这个就涉及到了Object.prototype了
+
+![复图](../img/de-prototype.jpg);
+
+>分析：new的过程
+
+```js
+var obj = new Base();//Base 为某构造函数
+等同于
+var obj = {};
+obj.__proto__ = Base.prototype;
+Base.call(obj);
+
+```
+
 
 #### 作用域链的理解
 
+一般是出现在闭包研究问题的这个过程里吧哈哈，这里不是很难，记录一篇有关作用域的文章，单纯觉得写得很有趣
+[皮](https://segmentfault.com/a/1190000015779676)
 ------------
 
 ### 面向对象与继承
