@@ -201,6 +201,22 @@ if (Sys.safari) document.write('Safari: ' + Sys.safari);
 
 [babel与polyfill](https://segmentfault.com/a/1190000010106158?utm_source=tuicool&utm_medium=referral)
 
+### slice,substr,substring的区别
+
+先单独把slice和substring拎出来，他们呢都是两个参数分别代表截取字符串的起止位置，区别在于slice把负数当作从后计数而substring把负数当0.
+
+```js
+"hello world!".slice(-6, -1) // "world"
+"hello world!".substring("abc", 5) // "hello"
+```
+
+再说substr，两个参数分别是起始位置，和从起始位置下一位开始计数的长度，第一个参数可以是负数表示从后计位，第二个参数不能小于1.
+
+```js
+"hello world!".substr(-6, 5) // "world"
+"hello world!".substr(0, -1) // ""
+```
+
 ## 计网
 
 ### 从输入URL到页面加载完成的过程中都发生了什么事

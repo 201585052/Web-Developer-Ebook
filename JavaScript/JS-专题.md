@@ -709,6 +709,7 @@ console.log(obj2.name);//这里我们的obj2的改动影响的obj1的改动
 >浅拷贝概念
 
     像前提中出现的我们定义一个对象，并直接赋值给一个变量的时候，我们改变这个变量也会改变愿对象，这是因为变量其实没有重新开辟一片空间去保存一个对象的副本，而只是一个单纯的指向原对象的一个引用，所以我们改变变量的时候当然也会改变原有的对象
+
 >深拷贝概念
 
     这样看来深拷贝就好理解了，重新开辟一个空间，用来做原对象的副本，改变这个副本并不会影响原来的对象
@@ -1066,7 +1067,17 @@ thistest.doArrow();//456
 thistest.dothatArrow();//123
 ```
 
-### promise专题
+### Promise专题
+
+>Promise状态
+
+* pending
+
+* fulfilled
+
+* rejected
+
+resolve便指的是pending->fulfilled || pending->rejected,当状态改变后便定型便是resolved，所以注意Promise是三个状态
 
 >race与all 小尝试(all是并行请求)
 
@@ -1108,6 +1119,7 @@ foo(10,20)
     console.log( x,y );
 });
 ```
+
 >promise 发送串行并行请求
 
 ```js
@@ -1147,6 +1159,7 @@ Promise.all(promises)
 let parallelPromises = promises.reduce(
   (total, currentValue) => total.then(() => currentValue.then(print)),Promise.resolve()
 )
+//老实讲这个串行的写法不是很懂。。。
 
 parallelPromises
 .then(() => {
@@ -1157,17 +1170,26 @@ parallelPromises
 })
 ```
 
+[Promise基础手册](http://es6.ruanyifeng.com/#docs/promise)
+
 ### generator迭代器
 
->generator发送串行并行请求
+>generator发送串行并行请求与自动化执行
 
->generator自动化执行
+同理也能在es 6入门那书中找到答案
+
+[Generator函数](http://es6.ruanyifeng.com/#docs/generator)
 
 ### async/await
 
->async/await发送串行并行请求
 
 [async/await基础](https://blog.csdn.net/juhaotian/article/details/78934097)
+
+>async/await发送串行并行请求
+
+觉得比较合理的想法是如果发送的是串行请求的话，那么用async,并行的话用Promise.all
+
+[async函数](http://es6.ruanyifeng.com/#docs/async)
 
 ------------
 
