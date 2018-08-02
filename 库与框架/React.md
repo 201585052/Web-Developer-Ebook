@@ -296,6 +296,7 @@ function replaceNode(vnode,newVode) {
     模版的区别：vue（最初由angular推出）
           React-使用JSX
     使用起来学习成本低，比较符合js，而vue要学v-if v-for 之类（虽然vue模版分离比较好吧）
+
 >共同点
 
     1、都支持组件化
@@ -305,6 +306,7 @@ function replaceNode(vnode,newVode) {
 
     1、国内vue文档易读易学，滴滴专门vue，社区强大
     2、react适合团队水平高的
+
 ### React组件化
 > 说一下对组件化的理解
 
@@ -331,6 +333,7 @@ function replaceNode(vnode,newVode) {
     JSX是模版最终渲染成html
     初次渲染+修改state后的re-render正好符合vdom的使用场景
     简单说就是JSX-》js -》vnode(数据驱动视图)
+    
 >JSX本质是什么
 
     JSX语法（标签，js表达式，判断，循环事件绑定）

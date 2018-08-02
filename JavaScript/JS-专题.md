@@ -1176,7 +1176,27 @@ parallelPromises
 
 >generator发送串行并行请求与自动化执行
 
-同理也能在es 6入门那书中找到答案
+同理也能在es 6入门那书中找到答案(串行并行请求没有233)
+
+```js
+function run(fn) {
+  var gen = fn();
+
+  function next(err, data) {
+    var result = gen.next(data);
+    if (result.done) return;
+    result.value(next);
+  }
+
+  next();
+}
+
+function* g() {
+  // ...
+}
+
+run(g);
+```
 
 [Generator函数](http://es6.ruanyifeng.com/#docs/generator)
 
@@ -1187,7 +1207,7 @@ parallelPromises
 
 >async/await发送串行并行请求
 
-觉得比较合理的想法是如果发送的是串行请求的话，那么用async,并行的话用Promise.all
+觉得比较合理的想法是如果发送的是串行请求的话，那么用async,并行的话用Promise.all，至于以前想的async自动化执行的问题，他本来不就是把generator函数和自动执行器包装在一个函数里吗。。
 
 [async函数](http://es6.ruanyifeng.com/#docs/async)
 
