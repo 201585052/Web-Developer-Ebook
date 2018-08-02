@@ -291,16 +291,22 @@ function replaceNode(vnode,newVode) {
 
 >不同点
 
-    两者的本质区别：vue本质是MVVM框架，由MVC框架形成（React 可强行双向数据绑定）
+    两者的本质区别：
+             vue本质是MVVM框架，由MVC框架形成,而React本身只是view层他需要结合redux等库形成自己的生态
              React本质是前端组件化框架，由后端组件化进化而来（php smarty)（vue可强行支持组件化）
+             vue支持双向数据绑定，而React是单向数据流（当然也可以双向数据绑定只是没有那么方便)
     模版的区别：vue（最初由angular推出）
           React-使用JSX
     使用起来学习成本低，比较符合js，而vue要学v-if v-for 之类（虽然vue模版分离比较好吧）
+    个人觉得数据变化与数据驱动，React靠的是props和state
+    而vue是data(),父子通信的时候子节点$emit('toggle',state)向上有点儿像冒个泡的感觉然后父组件用@toggle这种内嵌属性去做节点监听
 
 >共同点
 
     1、都支持组件化
     2、数据驱动视图
+    3、vue2.0也是支持jsx的，其实我觉得两种框架都差不多。。
+    4、数据部分基本都放在组件顶层，较为统一
 
 >国内使用情况
 
