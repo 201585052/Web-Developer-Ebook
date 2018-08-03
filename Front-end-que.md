@@ -151,7 +151,7 @@ console.log(liao);
 
 * 被遗忘的定时器和回调
 
-* 引用计数问题
+* 引用计数问题(在一个函数内互相引用，即循环引用)
 
 [垃圾回收机制系列](https://blog.csdn.net/michael8512/article/details/77888000)
 
