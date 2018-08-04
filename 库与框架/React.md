@@ -520,6 +520,10 @@ render(){
 }
 ```
 
+### 对redux的理解
+
+[阮一峰老师教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+
 ---
 
 参考书：深入React技术栈

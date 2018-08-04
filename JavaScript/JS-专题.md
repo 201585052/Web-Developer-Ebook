@@ -305,7 +305,7 @@ for(var i=0;i<10;i++)
     said.say();
 ```
 
->闭包应用场景4:闭包应用场景4:超多的回调，差不多回调的最简含义如下
+>闭包应用场景4:超多的回调，差不多回调的最简含义如下
 
 ```js
 function dosomething(callback,x,y){
