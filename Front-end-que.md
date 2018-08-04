@@ -223,6 +223,7 @@ if (Sys.safari) document.write('Safari: ' + Sys.safari);
 
 [主要](https://www.jianshu.com/p/71cf7f69eca8)
 [具体](https://segmentfault.com/a/1190000006879700)
+[强缓存与协商缓存](https://www.cnblogs.com/wonyun/p/5524617.html)
 
 ps:突然意识到重绘与重排的重排是reflow，也就是书上写的回流
 

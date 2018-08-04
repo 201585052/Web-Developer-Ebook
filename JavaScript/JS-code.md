@@ -320,3 +320,31 @@ const toDecimalMark = num => num.toLocaleString('en-US');
 
 偶然发现的比较有趣的，哇这个真的是真大佬，30-seconds系列无敌强。。。，然后这个是国人翻译的
 [实用有趣的js代码片段](http://www.css88.com/30-seconds-of-code/)
+
+## js-OJ
+
+感觉正式放弃c++写是件比较痛苦的事，可是从事一门像一门以后oj练题与数据结构从js入手。
+
+### 读取
+
+从oj上读取数据是第一步。。。
+
+>读取字符串
+
+```js
+while(line = readline()){
+    var str = line.trim();
+    ...
+}
+```
+
+>读取变量
+
+```js
+var line;
+while(line = readline().spilt(' ')){
+    var a = line[0];
+    var b = line[1];
+    ...
+}
+```
