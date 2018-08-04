@@ -248,7 +248,19 @@ console.log(result[0]());
 console.log(result[5]());
 ```
 
->闭包应用场景2:函数柯里化
+>闭包应用场景2:函数式编程
+
+1、高阶函数
+
+像sort，map，filter，reduce他们就是不错的例子,正则里的replace附带函数,
+
+```js
+num.sort(function(x,y){
+    return x-y;
+})
+```
+
+2、函数科里化
 
 ```js
 function addsome(x){
@@ -261,6 +273,20 @@ var add10 = addsome(10);
 console.log(add5(1));
 console.log(add10(1));
 输出6和11
+```
+
+3、偏函数
+
+个人理解是借用函数的前一部分形参作为输入（一般不做输出），后一部分可输入可输出，来产生一个新的定制函数的形式(选自朴灵)
+
+```js
+var isType = function(type){
+    return function(obj){
+        return Object.prototype.toString.call(obj) == '[object ' + type + ']';
+    }
+}
+var isString = isType('String');
+console.log(isString("123"));
 ```
 
 >闭包应用场景3:实现变量的私有化和公有化（用那个经典的立即执行函数当然是可以的）
@@ -279,8 +305,7 @@ for(var i=0;i<10;i++)
     said.say();
 ```
 
->闭包应用场景4:闭包应用场景4:超多的回调,像sort，map，filter，reduce他们就是不错的例子,正则里的replace附带函数,
-差不多回调的最简含义如下
+>闭包应用场景4:闭包应用场景4:超多的回调，差不多回调的最简含义如下
 
 ```js
 function dosomething(callback,x,y){

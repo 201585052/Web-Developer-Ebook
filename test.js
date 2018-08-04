@@ -1,9 +1,7 @@
-function run(fn){
-    var gen = fn();
-
-    function next(err,data){
-        var res = gen.next(data);
-        if(res.done) return;
-        res.value(next);
+var isType = function(type){
+    return function(obj){
+        return Object.prototype.toString.call(obj) == '[object ' + type + ']';
     }
 }
+var isString = isType('String');
+console.log(isString(123));
