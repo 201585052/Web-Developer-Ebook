@@ -98,6 +98,7 @@ function quicksort(arr)
 arr=[1,2,3,5,56,2,2,4,5,6,7,4,2,7,9];
 var res=quicksort(arr);
 console.log(res);
+//以下是算法导论上的代码，我转的js
 function Partition(arr,p,r){
       let x = arr[r];
       let i = p-1;
@@ -118,7 +119,20 @@ function quickSort(arr,p,r){
         quickSort(arr,q+1,r);
       }
 }
-
+//以下是传说中优雅的es 6 写法
+var arr =[7,3,4,2,5,6,6,8,100,20,-5];
+var quickSort = function(arr){
+  if(!arr.length){
+    return [];
+  }
+  const [pivot,...rest] = arr;
+  return [
+      ...quickSort(rest.filter((x) => x<pivot)),
+      pivot,
+      ...quickSort(rest.filter((x) => x>=pivot))
+  ];
+}
+console.log(quickSort(arr));
 ```
 
 >数组去重
