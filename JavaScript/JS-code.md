@@ -229,6 +229,8 @@ const scrollToTop = () => {
 };
 ```
 
+>实现全排列
+
 ## 正则表达式
 
 >用户名正则，4到16位（字母，数字，下划线，减号）
@@ -360,5 +362,55 @@ while(line = readline().spilt(' ')){
     var a = line[0];
     var b = line[1];
     ...
+}
+```
+
+### 剑指offer
+
+感觉到js-oj的不稳定性问题，决定还是用C++来做编程题，要好好捡一下了，可是已经用js做了几个经典的了
+
+>连续子数组最大和：
+
+```js
+function FindGreatestSumOfSubArray(array)
+{
+    var res = array[0];
+    var maxn = array[0];
+    //end表示以end结尾的数组的最大连续子序列,状态转移方程如下
+    //const getMax = (end) => end==0?array[end]:Math.max(getMax(end-1)+array[end],array[end]);
+    for(var i = 1, len = array.length;i < len;i++){
+        res = Math.max(res + array[i],array[i]);
+        maxn = Math.max(maxn,res);
+    }
+    return maxn;
+}
+
+```
+
+>和为s的连续正数序列
+
+```js
+function FindContinuousSequence(sum)
+{
+    var sta = 1,end = 2;
+    var res = [];
+    var temp = [];
+    while(end <= sum){
+        var cur = (sta+end)*(end-sta+1)/2;
+        if(cur < sum){
+            end++;
+        }else if(cur == sum){
+            for(var i = sta;i <= end;i++){
+                temp.push(i);
+            }
+            res.push(temp);
+            temp = [];
+            sta++;
+        }else{
+            sta++;
+            end = sta + 1;
+        }
+    }
+    return res;
 }
 ```

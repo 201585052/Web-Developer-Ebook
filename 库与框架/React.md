@@ -603,6 +603,8 @@ render(){
 }
 ```
 
+### React组件性能优化与immutable.js实现原理
+
 ### 对redux的理解
 
 [阮一峰老师教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
