@@ -6,9 +6,24 @@
 
 ### nodejs子进程 spawn，exec，execFile和fork的用法和区别？
 
+spawn()是启动一个子进程来执行命令
+exec()比spawn()多一个回调函数获知子进程的情况
+execFile()启动一个子进程来执行可执行文件
+fork()与spawn()很像，不同点在它创建Node的子进程只需要指定需要执行的JS文件即可
+
 ### nodejs中定时器process.nextTick和setImmediate的区别，优先级
 
+setTimeout()精确不够，相对浪费性能
+
+process.nextTick()方法操作相对轻量，每次调用process.nextTick(),只会将回调函数放入队列，下一轮Tick()时候取出执行。回调函数保存在一个数组中
+
+setImmediate是后出现的，和processImmediate十分相似，都是将回调函数延迟执行，保存在链表中。
+
+process.nextTick()优先级高于I/O观察者高于setImmediate()
+
 ## 框架
+
+### 实现一个简单的ejs模版引擎
 
 ### 比较Koa2和Koa1的区别，和express的区别？
 

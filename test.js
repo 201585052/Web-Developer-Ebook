@@ -1,7 +1,3 @@
-var isType = function(type){
-    return function(obj){
-        return Object.prototype.toString.call(obj) == '[object ' + type + ']';
-    }
-}
-var isString = isType('String');
-console.log(isString(123));
+process.nextTick(function(){
+    console.log("延迟执行1");
+},1000)

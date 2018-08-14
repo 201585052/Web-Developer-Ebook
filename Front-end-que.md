@@ -438,6 +438,8 @@ BSS（Block Started by Symbol）通常是指用来存放程序中未初始化的
 
 >static详解
 
+[好文](https://www.cnblogs.com/BeyondAnyTime/p/2542315.html)
+
 ## Webpack（感觉用都没有用太好，到水平了再去看源码吧orz）
 
 ### Webpack原理
