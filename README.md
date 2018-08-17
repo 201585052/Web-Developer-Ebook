@@ -35,6 +35,7 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [webpack](https://www.webpackjs.com/)
 * ECMA官方文档(http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.1)
+* [electron](https://electronjs.org/)
 
 >前沿
 
@@ -61,6 +62,8 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 * [掘金](https://juejin.im/)
 
 * [react中文社区](http://react-china.org/)
+
+* [CNode](https://cnodejs.org/)
 
 >资源
 
