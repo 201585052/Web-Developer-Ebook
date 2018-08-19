@@ -265,6 +265,8 @@ console.log(permutations("1234"));
 
 ## 正则表达式
 
+### exec、test、match区别解析
+
 >用户名正则，4到16位（字母，数字，下划线，减号）
 
     var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;

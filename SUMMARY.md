@@ -20,5 +20,6 @@
     * [hybrid](库与框架/hybrid.md)
     * [jQuery](库与框架/jQuery.md)
     * [React](库与框架/React.md)
+    * [Vue](库与框架/Vue.md)
 * [第五章Node.js](Node.js/Node.md)
 
