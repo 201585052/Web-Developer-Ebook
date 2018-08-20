@@ -373,7 +373,7 @@ const toDecimalMark = num => num.toLocaleString('en-US');
 
 ## js-OJ
 
-感觉正式放弃c++写是件比较痛苦的事，可是从事一门像一门以后oj练题与数据结构从js入手。
+自打上次网易笔试js输入输出事件后，除非特别有优势，笔试题还是用C++吧～，但是用js写的基本知识要弄清，我觉得上次就是因为对数据输入的处理不对
 
 ### 读取
 
@@ -393,8 +393,8 @@ while(line = readline()){
 ```js
 var line;
 while(line = readline().spilt(' ')){
-    var a = line[0];
-    var b = line[1];
+    var a = line[0]; // 如果是要读取整数就要用parseInt函数转化一下
+    var b = line[1];// 所以说js写oj一定要注意输入输出的弱类型转化问题
     ...
 }
 ```
