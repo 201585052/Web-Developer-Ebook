@@ -434,7 +434,7 @@ BSS（Block Started by Symbol）通常是指用来存放程序中未初始化的
 
 ![见图](img/sort.jpeg)
 
-哪个过程忘了就上网再复习下。。。
+哪个过程忘了就上网再复习下。。。附上一个讲得比较好的[图解排序](https://www.cnblogs.com/chengxiao/p/6103002.html)
 
 ### 经典问题
 
