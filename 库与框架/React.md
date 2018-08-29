@@ -605,6 +605,11 @@ render(){
 }
 ```
 
+### React-router中的browserhistory和hashhistory的区别
+
+还是官方推荐用前者，前者相对也比较麻烦，需要express或者nignx（也就是服务端）配合。后者的话就是加一个#来进行配置，适合静态页面
+
+
 ### React组件性能优化与immutable.js实现原理
 
 ### 对redux的理解
