@@ -13,6 +13,15 @@ __前言:__
 
 [这是一条经验贴](http://www.mamicode.com/info-detail-1848730.html)
 
+> mousedown、click、mouseup、touchstart、touchend执行顺序？
+
+```txt
+mousedown、mouseup在移动端上是没有的。。。直接看touchstart、touchend（延迟200ms左右）、click（延迟300ms左右）。难倒不难，里面有坑
+```
+
+### meta头
+[较全](https://www.cnblogs.com/y-lin/p/5798119.html)
+
 ## 浏览器内核，渲染，兼容性
 
 ### 页面DOM重绘与页面重排
@@ -223,6 +232,13 @@ if (Sys.safari) document.write('Safari: ' + Sys.safari);
 ```js
 "hello world!".substr(-6, 5) // "world"
 "hello world!".substr(0, -1) // ""
+```
+### js小问
+
+> New Date().getTime()返回什么，循环10000次输出这个值会得到几个不同的值?
+
+```txt
+一个从1970年1月1日到现在的时间戳，以毫秒为单位。400多
 ```
 
 ## 计网
@@ -453,6 +469,12 @@ BSS（Block Started by Symbol）通常是指用来存放程序中未初始化的
 >static详解
 
 [好文](https://www.cnblogs.com/BeyondAnyTime/p/2542315.html)
+
+## 框架
+
+### React和Vue的比较
+
+[小文](https://baijiahao.baidu.com/s?id=1608210396818353443&wfr=spider&for=pc)
 
 ## Webpack（感觉用都没有用太好，到水平了再去看源码吧orz）
 
