@@ -505,11 +505,6 @@ for(var i=1;i<=4;i++){
 
 ### 原型与原型链与构造函数
 
-#### this
-
-[cherry的文章](https://juejin.im/post/59bfe84351882531b730bac2)
-和自己原来对this的理解差不多，其中的指向最后一次调用的思想嗯。。。。
-
 ##### new、_proto_、prototype、constructor
 
 >简单版理解
@@ -535,6 +530,17 @@ Base.call(obj);
 
 ```
 
+### 函数与作用域
+
+#### this的理解
+
+[原理层面](http://www.ruanyifeng.com/blog/2018/06/javascript-this.html)
+
+[实战层面(cherry的文章)](https://juejin.im/post/59bfe84351882531b730bac2)
+
+#### 函数参数与arguments
+
+[例子讲解～](http://www.cnblogs.com/lwbqqyumidi/archive/2012/12/03/2799833.html)
 
 #### 作用域链的理解
 
