@@ -288,7 +288,29 @@ Function.prototype.bindPoly=function(othis){
 test.say.bindPoly(real,2)();
 ```
 
+[官方polyfill](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+
+
 >手写map
+
+[官方polyfill](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+>手写函数柯里化
+
+```js
+function f(a, b){
+    if(arguments.length===2){
+        return a+b;
+    }else{
+        let args = arguments;
+        return function(){
+            return args[0] + arguments[0];
+        }
+    }
+}
+console.log(f(1)(2));
+console.log(f(1,2));
+```
 
 ## 正则表达式
 
