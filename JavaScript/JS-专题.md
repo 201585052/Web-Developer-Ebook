@@ -12,6 +12,8 @@ __前言:__
 
 堆：引用数据类型对象，数组，函数，Date
 
+[基本数据类型和引用数据类型的区别](https://www.cnblogs.com/cxying93/p/6106469.html)
+
 > typeof简单判定（无法区分null，数组和对象）
 
     typeof 2 //number
@@ -273,6 +275,22 @@ var add10 = addsome(10);
 console.log(add5(1));
 console.log(add10(1));
 输出6和11
+```
+
+```js
+//上面的例子其实不算是严格的函数柯里化的思想，或者说比较基础吧，上一个比较经典的面试题
+function f(a, b){
+    if(arguments.length===2){
+        return a+b;
+    }else{
+        let args = arguments;
+        return function(){
+            return args[0] + arguments[0];
+        }
+    }
+}
+console.log(f(1)(2));
+console.log(f(1,2));
 ```
 
 3、偏函数
@@ -702,6 +720,79 @@ var hh=new child("liao",150,"boy");
 hh.say();
 console.log(hh.friends);
 
+```
+
+这种继承的缺点是调用了两次父类构造函数性能消耗大一点，但是相对于其他的继承方案而言已经是比较不错的继承方法了
+
+> 有所升级的寄生组合继承
+
+```js
+function Person(name,height){
+    this.name = name;
+    this.height = height;
+    this.friends=["liao1","liao2"];
+}
+Person.prototype.say = function () {
+    console.log("I'm "+this.name);
+}
+function child(name,height,sex){
+    Person.apply(this);
+    this.name=name;
+    this.height = height;
+    this.sex = sex;
+}
+(function(){
+    var F = function(){};
+    F.prototype = Person.prototype;
+    child.prototype = new F();
+})()
+var hh=new child("liao",150,"boy");
+hh.say();
+console.log(hh.friends);
+```
+
+F算是对红宝书的致敬吧，上面记得用的就是这个F，当时老实讲还没看懂orz，现在理解了其实就是有一次构造函数的调用变成一个啥也没有的构造函数的调用（这样会不会使原型链稍显混乱？233）说个有趣的事情吧，其实Object.create()就是上述的中间层替换的语法糖，看下MDN的polyfill（）2333
+
+```js
+function F() {}
+    F.prototype = proto;
+    return new F();
+```
+
+但是这种构造函数的情况下不太适合写Object.create()哈，一般他和对象字面量结合在一起玩～
+
+```js
+//这段代码是网上某老哥的
+var Parent = {
+    getName: function() {
+        return this.name;
+    },
+    getSex: function() {
+        return this.sex;
+    }
+}
+ 
+var Child = Object.create(Parent, {
+    name: { value: "Benjamin"},
+    url : { value: "http://www.zuojj.com"}
+});
+ 
+var SubChild = Object.create(Child, {
+    name: {value: "zuojj"},
+    sex : {value: "male"}
+})
+ 
+//Outputs: http://wwww.zuojj.com
+console.log(SubChild.url);
+ 
+//Outputs: zuojj
+console.log(SubChild.getName());
+ 
+//Outputs: undefined
+console.log(Child.sex);
+ 
+//Outputs: Benjamin
+console.log(Child.getName());
 ```
 
 ### 对象的深浅拷贝

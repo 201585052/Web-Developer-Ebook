@@ -1,12 +1,18 @@
-function f(a, b){
-    if(arguments.length===2){
-        return a+b;
-    }else{
-        let args = arguments;
-        return function(){
-            return args[0] + arguments[0];
-        }
-    }
+function Person(name,height){
+    this.name = name;
+    this.height = height;
+    this.friends=["liao1","liao2"];
 }
-console.log(f(1)(2));
-console.log(f(1,2));
+Person.prototype.say = function () {
+    console.log("I'm "+this.name);
+}
+function child(name,height,sex){
+    Person.apply(this);
+    this.name=name;
+    this.height = height;
+    this.sex = sex;
+}
+child.prototype = Object.create(new Person());
+var hh=new child("liao",150,"boy");
+hh.say();
+console.log(hh.friends);
