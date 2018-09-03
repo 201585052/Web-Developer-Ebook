@@ -66,6 +66,10 @@ if(!(Object.keys(test).length)){console.log("方法4");}//es6
 
 ------------
 
+### 变量声明之var,let,const
+
+[讲的挺全的](https://blog.csdn.net/zhouzuoluo/article/details/80724033)
+
 ### 变量提升
 
 >在定义或定义赋值之前引用，会只提变量，为undefined
