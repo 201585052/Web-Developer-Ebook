@@ -230,6 +230,80 @@ if (Sys.safari) document.write('Safari: ' + Sys.safari);
 
 [babel与polyfill](https://segmentfault.com/a/1190000010106158?utm_source=tuicool&utm_medium=referral)
 
+### setIntervel和setTimeout
+
+被问到这道题的时候倒不是他有多难，而是思维定式会给我们带来一些可能不好的回答。
+
+>共同点
+
+他们呢所执行的函数都会先放到事件队列里等待执行。
+
+>不同点
+
+setTimeout是一次性延迟执行，而setInterval是循环往复的执行，而且setInterval在实战中有一个问题就是如果窗口最小化的话，setInterval里面的任务还是会执行，然后等到窗口回来只后再统一执行最后的效果，所以通常我们用到setInterval的时候窗口最小化要有一个clearInterval()的处理emmm
+
+>与setTimeout的机制比较
+
+```js
+var i = 0;
+setInterval(function(){
+    console.log(i++);
+},1000);
+setTimeout(() => console.log('liao'), 0);
+setTimeout(() => console.log('liao'), 20);
+setTimeout(() => console.log('liao'), 1000);
+setTimeout(() => console.log('liao'), 1500);
+setTimeout(() => console.log('liao'), 2000);
+setTimeout(() => console.log('liao'), 2500);
+setTimeout(() => console.log('liao'), 3000);
+
+//嗯。。这个测试很明显了，其实就是setInterval在第一次将事件插入到事件队列的时候，是优先于setTimeout的
+//后来的循环再插入到事件队列里的时候是不优先的
+
+for(var i = 0;i<10;i++) {
+    setInterval(function(){
+        console.log(i);
+    },1000);
+    setTimeout(function(){
+        console.log('liaoliao');
+    },1000);
+}
+```
+
+>用setTimeout实现一个setInterval
+
+```js
+//setInterval(fn, delay);
+var i = 0;
+var t;
+function setTim(fn, delay, cancel){
+    t = setTimeout(function(){
+        fn();
+        setTim(fn, delay);
+    }, delay);
+    if(i == 4){
+        clearTimeout(t);
+        return;
+    }
+}
+setTim(() => console.log(i++),1000);
+```
+
+嗯。。。。水平问题，在取消循环那里封装性做的并没有setInterval那么好orz，红宝书上其实有讲用setTimeout替代setInterval的好处：
+
+setInterval缺点
+
+* 定时器阻塞
+
+* 解决定时器内设立定时器无效问题
+
+[红宝书人工](https://blog.csdn.net/baidu_24024601/article/details/51862488)
+
+>惊了
+
+即使消息队列是空的，0毫秒实际上也是达不到的。根据HTML 5标准，setTimeout
+推迟执行的时间，最少是4毫秒。如果小于这个值，会被自动增加到4。这是为了防止多个setTimeout(f, 0)语句连续执行，造成性能问题
+
 ### slice,substr,substring的区别
 
 先单独把slice和substring拎出来，他们呢都是两个参数分别代表截取字符串的起止位置，区别在于slice把负数当作从后计数而substring把负数当0.
@@ -475,6 +549,11 @@ BSS（Block Started by Symbol）通常是指用来存放程序中未初始化的
 [海量数据中淘数据大全](https://blog.csdn.net/u010601183/article/details/56481868/)
 
 PS:留意其中同样经典的N中K问题，海量数据中n个数求第k个大的，是用桶排、快排、堆排？
+这个问题可能最好的答案还是要用小顶堆
+
+[参考](https://blog.csdn.net/bin_ge_love/article/details/51737099)
+
+![小顶堆](img/smallheap.gif)
 
 >平衡二叉树->AVL树->红黑树
 

@@ -508,7 +508,12 @@ console.log(3);
 // 又分析了去掉while的代码，差不多得出了一个有关setTimeout和Promise的规律
 // setTimeout是本轮事件结束下轮事件开始时运行，promise是本轮事件结束时运行，也就是说就算是
 // then也是在setTimeout之前的
+//这里学了一下回来补充，所谓的promise与setTimeout执行顺序就是传说中的宏任务与微任务的区别，微任务比较少基本上也就promise和process.nextTick()会涉及
 ```
+
+补充我个人觉得的话上述那个例子作为微任务宏任务的简化例子就差不多了
+
+[上大牛](http://www.cnblogs.com/jiasm/p/9482443.html)
 
 > setTimeout+同步异步队列
 
