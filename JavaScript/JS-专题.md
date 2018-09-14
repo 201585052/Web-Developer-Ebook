@@ -64,7 +64,47 @@ if(!(Object.keys(test).length)){console.log("方法4");}//es6
 
 ```
 
-------------
+### 类型转化问题
+
+这个问题在《你不知道的JS》中有较为详尽的解释，当初看的时候也是一扫而过觉得精彩，直到突然有一天在面试中被问到 [] == true 和 {} == true 才突然觉得这里可以搞。
+
+#### 引例
+
+在说类型转化之前先说下基本类型和引用类型，js中六大基本数据类型都是保存在栈中，而引用类型如数组、函数或者Object都是保存在堆中，当我们赋予a = obj 这种情况时，实际上a是只是一个指向obj的指针，嗯。。。下面的例子蛮明晰的我觉得
+
+```js
+var a = function() {console.log(11)};
+var b = function() {console.log(11)};
+console.log(a == b);
+
+var a = {
+    name:"liao",
+    say: function(){
+        console.log("i'm", this.name);
+    }
+}
+var b = {
+    name:"liao",
+    say: function(){
+        console.log("i'm", this.name);
+    }
+}
+
+console.log(a == b);//false
+console.log({} == {});//false
+console.log([] == []);//false
+console.log(new String(123) == new String(123));//false
+console.log(1 == 1);//true
+console.log("123" == "123");//true
+console.log("123" == new String(123));//true
+
+```
+
+#### 理论实践结合，看看中间算法
+
+[实践查表](https://dorey.github.io/JavaScript-Equality-Table/)
+
+[理论算法](https://blog.csdn.net/wmaoshu/article/details/69676896)
 
 ### 变量声明之var,let,const
 
