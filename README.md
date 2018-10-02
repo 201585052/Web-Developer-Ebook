@@ -55,6 +55,12 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 
 * [阮一峰老师](http://www.ruanyifeng.com/blog/)
 
+* [IMWeb](http://imweb.io/)
+
+* [美团技术团队](https://tech.meituan.com/)
+
+* [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
+
 >社区
 
 * [segmentfaul](https://segmentfault.com/frontend)
@@ -74,6 +80,8 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
 * [设计可参考 1](https://www.syncfusion.com/)
 
 * [设计可参考 2](https://www.qianduanmei.com/)
+
+* [简书](https://www.jianshu.com/)
 
 >工具
 
