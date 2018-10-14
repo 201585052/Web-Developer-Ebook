@@ -12,6 +12,7 @@ linux更快更简洁，windows商用软件比较全，服务器可以随便折�
 
 * mac的基础环境
     * oh my zsh！
+    * homebrew
     * docker
     * vscode
     * 其他商用软件
