@@ -17,6 +17,9 @@ linux更快更简洁，windows商用软件比较全，服务器可以随便折�
     * vscode
     * 其他商用软件
 
+* chrome插件
+    * Octotree
+
 * 重要数据
     * 云端:oneNote+github
     * 本地:可移动硬盘+本地
