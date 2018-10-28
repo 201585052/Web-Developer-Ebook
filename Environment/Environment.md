@@ -21,7 +21,7 @@ linux更快更简洁，windows商用软件比较全，服务器可以随便折�
     * Octotree
 
 * 重要数据
-    * 代码及周边:oneNote+github
+    * 代码及周边:Github
     * 个人Data:可移动硬盘+本地
 
 
