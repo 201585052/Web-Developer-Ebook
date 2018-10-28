@@ -21,8 +21,8 @@ linux更快更简洁，windows商用软件比较全，服务器可以随便折�
     * Octotree
 
 * 重要数据
-    * 云端:oneNote+github
-    * 本地:可移动硬盘+本地
+    * 代码及周边:oneNote+github
+    * 个人Data:可移动硬盘+本地
 
 
 ## 对于工具、环境、数据、及重要数据的看法及反省
