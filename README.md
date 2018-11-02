@@ -17,6 +17,7 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
   * HTMLHint（查错）
   * jQuery Code Snippets（提醒）
   * Markdown PDF
+  * Markdown Theme Kit （不知道有没有用，用的是自己的css）
   * markdownlint（markdown书写规范）
   * Markdown Preview Enhanced（[可以看](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/))
   * open in browser（alt+B打开网页浏览，较方便）
@@ -25,6 +26,10 @@ __前言:__ 希望学到的看到的书和源码都可以变成自己的东西�
   * VSCode Great Icons（好看）
   * Project Manager（没自己用过，听说很好用）
   * vscode-fileheader（没自己用过，听说很好用）
+  * Bracket Pair Colorizer (括号插件）
+  * VSCode Great Icons(自己更新安装的？【笑哭】)
+  * Python(由此可见mac用brew做包管理的重要性)
+  
 
 >学习及文档
 
