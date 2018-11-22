@@ -19,6 +19,8 @@ linux更快更简洁，windows商用软件比较全，服务器可以随便折�
 
 * chrome插件
     * Octotree
+* 其他
+    * processon(思维导图神器）
 
 * 重要数据
     * 代码及周边:Github
